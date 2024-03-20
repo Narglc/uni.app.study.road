@@ -13,6 +13,14 @@
 				"navigationBarTitleText" : "demo3页面",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo4/demo4",
+			"style" : 
+			{
+				"navigationBarTitleText" : "demo4",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
