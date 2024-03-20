@@ -7,6 +7,22 @@
 			}
 		},
 		{
+			"path" : "pages/demostart/demostart",
+			"style" : 
+			{
+				"navigationBarTitleText" : "demostart浏览页",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/imageDemo/imageDemo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "多媒体展示",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path" : "pages/demo3/demo3",
 			"style" : 
 			{
@@ -67,6 +83,14 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "demo10",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo1/demo1",
+			"style" : 
+			{
+				"navigationBarTitleText" : "demo1",
 				"enablePullDownRefresh" : false
 			}
 		}
