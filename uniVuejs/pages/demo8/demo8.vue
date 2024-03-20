@@ -1,7 +1,7 @@
 <template>
 	<view class="out">
 		<view>
-			<input type="text" :value="iptVal" @focus="onFocus" @blur="onBlur"/>
+			<input type="text" :value="iptVal" @focus="isActive=true" @blur="isActive=false"/>
 			<image src="../../static/chicken.gif" mode="" class="pic" :class="isActive?'active':''"></image>	
 		</view>
 	</view>
@@ -13,17 +13,17 @@ import { ref } from "vue";
 const iptVal = ref("")
 const isActive = ref(false)
 
-// 获取焦点 @focus
-function onFocus(e){
-	console.log(e);
-	isActive.value = true
-}
+// // 获取焦点 @focus
+// function onFocus(e){
+// 	console.log(e);
+// 	isActive.value = true
+// }
 
-// 失去焦点 @blur
-function onBlur(e){
-	isActive.value = false
-	console.log(e);
-}
+// // 失去焦点 @blur
+// function onBlur(e){
+// 	isActive.value = false
+// 	console.log(e);
+// }
 
 </script>
 
