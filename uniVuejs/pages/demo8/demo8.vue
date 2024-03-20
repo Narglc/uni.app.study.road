@@ -1,6 +1,6 @@
 <template>
 	<view class="out">
-		<input type="text" :value="iptVal" @focus="isActive=true" @blur="isActive=false" @input="onInput"/>
+		<input type="text" v-model="iptVal" @focus="isActive=true" @blur="isActive=false"/>
 		<image src="../../static/chicken.gif" mode="" class="pic" :class="isActive?'active':''"></image>
 	</view>
 	<view>预览:{{ iptVal}} </view>
@@ -24,10 +24,10 @@ const isActive = ref(false)
 // 	console.log(e);
 // }
 
-function onInput(e){
-	console.log(e);
-	iptVal.value = e.detail.value
-}
+// function onInput(e){
+// 	console.log(e);
+// 	iptVal.value = e.detail.value
+// }
 
 </script>
 
