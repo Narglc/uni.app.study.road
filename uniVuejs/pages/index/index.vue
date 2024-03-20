@@ -73,9 +73,6 @@ obj.value.name = "里斯本"
 </script>
 
 
-
-
-
 <style lang="scss">
 .lessonOne{
 	border: 1px solid red;
