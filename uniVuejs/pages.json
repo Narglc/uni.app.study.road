@@ -53,6 +53,14 @@
 				"navigationBarTitleText" : "demo8",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/hotfun/hotfun",
+			"style" : 
+			{
+				"navigationBarTitleText" : "热梗指南",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
