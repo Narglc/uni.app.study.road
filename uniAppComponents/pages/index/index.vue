@@ -1,11 +1,15 @@
 <template>
 	<view class="content">
 		<jac-header></jac-header>
-		<UserInfo></UserInfo>
+		<UserInfo username="narglc" avatar="../../static/pic1.png"></UserInfo>
+		<UserInfo :username="name" avatar="../../static/pic2.gif"></UserInfo>
+		<UserInfo :username="王强" avatar="../../static/pic3.jpeg"></UserInfo>
 	</view>
 </template>
 
-<script>
+<script setup>
+import {ref} from "vue";
+const name = ref("小明");
 </script>
 
 <style>
