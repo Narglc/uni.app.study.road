@@ -13,6 +13,22 @@
 				"navigationBarTitleText" : "for 对比",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo3/demo3",
+			"style" : 
+			{
+				"navigationBarTitleText" : "map(callbackFn)的使用",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo4/demo4",
+			"style" : 
+			{
+				"navigationBarTitleText" : "filter()方法",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
