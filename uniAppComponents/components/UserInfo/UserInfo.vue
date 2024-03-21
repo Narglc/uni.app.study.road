@@ -9,9 +9,22 @@
 import {computed} from "vue";
 	
 // username,avatar 均为单向传参，不支持修改
-const props = defineProps(['username','avatar'])
-console.log(props);
-console.log(props.username);
+// const props = defineProps(['username','avatar'])
+// console.log(props);
+// console.log(props.username);
+
+// defineProps 另一种写法:[支持类型校验]
+const props = defineProps({
+	username:{
+		type:String,
+		default:"匿名",
+	},
+	avatar:{
+		type:String,
+		default:"../../static/logo.png",
+	}
+})
+
 
 // 想要在名字后面+@，使用computed实现
 const myname = computed(()=>{
