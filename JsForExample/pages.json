@@ -61,6 +61,14 @@
 				"navigationBarTitleText" : "some()方法使用",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo8/demo8",
+			"style" : 
+			{
+				"navigationBarTitleText" : "includes()方法",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
