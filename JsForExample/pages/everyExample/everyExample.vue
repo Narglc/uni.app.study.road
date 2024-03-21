@@ -25,7 +25,8 @@ const state = computed(()=>{
 	// }
 	// 说明: every() 只用作用于数组类型
 	// 如果 obj 想使用every(),必须先使用 Object.values(obj.value)方法, 将obj的值依次提取为数组["","","",""]
-	return !Object.values(obj.value).every(item=>item);
+	// return !Object.values(obj.value).every(item=>item);
+	return !Object.values(obj.value).some(item=>item);
 })
 
 function onSubmit(e){

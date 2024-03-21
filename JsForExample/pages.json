@@ -45,6 +45,22 @@
 				"navigationBarTitleText" : "every()方法",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/everyExample/everyExample",
+			"style" : 
+			{
+				"navigationBarTitleText" : "everyExample",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo7/demo7",
+			"style" : 
+			{
+				"navigationBarTitleText" : "some()方法使用",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
