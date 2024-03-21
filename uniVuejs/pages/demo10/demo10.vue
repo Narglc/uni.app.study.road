@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import {ref,computed,watch} from "vue";
+import {ref,computed,watch,watchEffect} from "vue";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -54,6 +54,11 @@ const fullNameWatch = ref("")
 // 后者同时监听两个变量
 watch([firstName,lastName],([Nfirstname,NlastName],[OfirstName,OlastName])=>{
 	fullNameWatch.value = Nfirstname + "-" + NlastName;
+})
+
+// watchEffect的使用:监听所有，性能会稍差
+watchEffect(()=>{
+	console.log("watchEffect:[",firstName.value,"],[",lastName.value,"]");
 })
 
 </script>
