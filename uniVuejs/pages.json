@@ -93,6 +93,14 @@
 				"navigationBarTitleText" : "demo1",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo11/demo11",
+			"style" : 
+			{
+				"navigationBarTitleText" : "watch侦听器",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
