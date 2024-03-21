@@ -34,7 +34,15 @@
 			"path" : "pages/demo5/demo5",
 			"style" : 
 			{
-				"navigationBarTitleText" : "redus()求和秋积等方法",
+				"navigationBarTitleText" : "reduce()求和秋积等方法",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo6/demo6",
+			"style" : 
+			{
+				"navigationBarTitleText" : "every()方法",
 				"enablePullDownRefresh" : false
 			}
 		}
