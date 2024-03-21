@@ -29,6 +29,14 @@
 				"navigationBarTitleText" : "filter()方法",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo5/demo5",
+			"style" : 
+			{
+				"navigationBarTitleText" : "redus()求和秋积等方法",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
