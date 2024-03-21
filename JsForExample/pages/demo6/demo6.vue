@@ -24,7 +24,6 @@ let objArrs = [
 // 判断是否所有产品都有库存true
 let rst = objArrs.every(item=>item.stock && item.price>500);
 console.log(rst);
-true
 </script>
 
 <style lang="scss" scoped>

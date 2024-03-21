@@ -170,5 +170,53 @@ let newArr6 = arrs6.filter(item=>{
 
 // 或简写为：
 let newArr6 = arrs6.filter(item=>item.id).map(item=>({...item,author: "nar"}))
-
 ```
+
+### every() 方法
+
+```javascript
+/**
+ * every()方法：
+ * 作用:判断数组中所有元素是否满足函数中给定的条件,全部满足返回true,只要有一项不满足则返回false.
+ * 注意: every()方法只能作用于arr数组
+ */
+
+let arrs = [1,2,3,4,5];
+let result = arrs.every(num=>num>0);
+console.log(">0?",result);
+
+let objArrs = [
+	{name:"华为", price:6999,stock:true},
+	{name:"苹果", price:9888,stock:true},
+	{name:"小米", price:2999,stock:true},
+	{name:"红米", price:899,stock:true},
+];
+
+// 判断是否所有产品都有库存true
+let rst = objArrs.every(item=>item.stock && item.price>500);
+console.log(rst);
+
+// -----------------
+// 更高级的使用方法:
+// every() 处理 obj
+import {computed, ref} from "vue";
+const obj = ref({
+	name:"",
+	age:"",
+	gender:"",
+	like:"",
+})
+
+const state = computed(()=>{
+	// if(obj.value.name && obj.value.age && obj.value.gender && obj.value.like){
+	// 	return false;
+	// }else{
+	// 	return true;
+	// }
+	// 说明: every() 只用作用于数组类型
+	// 如果 obj 想使用every(),必须先使用 Object.values(obj.value)方法, 将obj的值依次提取为数组["","","",""]
+	return !Object.values(obj.value).every(item=>item);
+})
+```
+
+
