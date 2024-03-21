@@ -1,7 +1,11 @@
 <template>
 	<view class="userinfo">
-		<image :src="avatar" mode="" class="avatar"></image>
-		<view class="username">{{myname}}</view>
+<!-- 		<image :src="avatar" mode="" class="avatar"></image>
+		<view class="username">{{myname}}</view> -->
+		
+		<image :src="obj.avatar" mode="" class="avatar"></image>
+		<view class="username">{{obj.username}}</view>
+		
 	</view>
 </template>
 
@@ -13,22 +17,35 @@ import {computed} from "vue";
 // console.log(props);
 // console.log(props.username);
 
-// defineProps 另一种写法:[支持类型校验]
-const props = defineProps({
-	username:{
-		type:String,
-		default:"匿名",
-	},
-	avatar:{
-		type:String,
-		default:"../../static/logo.png",
+// // defineProps 另一种写法:[支持类型校验]
+// const props = defineProps({
+// 	username:{
+// 		type:String,
+// 		default:"匿名",
+// 	},
+// 	avatar:{
+// 		type:String,
+// 		default:"../../static/logo.png",
+// 	}
+// })
+
+
+// // 想要在名字后面+@，使用computed实现
+// const myname = computed(()=>{
+// 	return props.username + "@";
+// })
+
+// 传递对象时，默认值一定要用 default() 方法，并返回对象
+defineProps({
+	obj:{
+		type:Object,
+		default(){
+			return {
+				username:"匿名",
+				avatar:"../../static/logo.png"
+			}
+		}
 	}
-})
-
-
-// 想要在名字后面+@，使用computed实现
-const myname = computed(()=>{
-	return props.username + "@";
 })
 
 </script>
