@@ -1,12 +1,23 @@
 <template>
 	<view class="userinfo">
 		<image :src="avatar" mode="" class="avatar"></image>
-		<view class="username">{{username}}</view>
+		<view class="username">{{myname}}</view>
 	</view>
 </template>
 
 <script setup>
-defineProps(['username','avatar'])
+import {computed} from "vue";
+	
+// username,avatar 均为单向传参，不支持修改
+const props = defineProps(['username','avatar'])
+console.log(props);
+console.log(props.username);
+
+// 想要在名字后面+@，使用computed实现
+const myname = computed(()=>{
+	return props.username + "@";
+})
+
 </script>
 
 <style lang="scss" scoped>

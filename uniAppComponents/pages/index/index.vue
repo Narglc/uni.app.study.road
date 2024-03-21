@@ -3,7 +3,7 @@
 		<jac-header></jac-header>
 		<UserInfo username="narglc" avatar="../../static/pic1.png"></UserInfo>
 		<UserInfo :username="name" avatar="../../static/pic2.gif"></UserInfo>
-		<UserInfo :username="王强" avatar="../../static/pic3.jpeg"></UserInfo>
+		<UserInfo username="王强" avatar="../../static/pic3.jpeg"></UserInfo>
 	</view>
 </template>
 
