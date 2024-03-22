@@ -1,7 +1,8 @@
 <template>
 	<view class="">
-		<jac-child @add="onAdd"></jac-child>
+		<jac-child @add="onAdd" @output="onOutput"></jac-child>
 		<view class="box" :style="{background:color}">{{num}}</view>
+		<view>demo3页面显示:{{outStr}}</view>
 	</view>
 </template>
 
@@ -10,6 +11,7 @@ import {ref} from "vue";
 const num = ref(0);
 const color = ref("#ccc")
 
+const outStr = ref("");
 // const onAdd = function(num){
 // 	console.log(num);
 // }
@@ -21,6 +23,12 @@ function onAdd(e){
 	color.value = "#" + String(e).substring(3,9);
 	// console.log(color.value);
 }
+
+function onOutput(e){
+	console.log(e);
+	outStr.value = e;
+}
+
 </script>
 
 <style lang="scss" scoped>
