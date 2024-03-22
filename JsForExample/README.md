@@ -12,6 +12,29 @@
 - onShow		每次页面显示时,都会显示
 - onHide		从当前页面跳转开时,会被调用[eg.切后台]
 
+### 执行顺序
+
+**不包含组件的页面**
+
+onLoad > onShow > onReady
+> 只有`onReady`可以拿到 DOM
+
+**包含组件的页面**
+
+onLoad > onShow > beforeCreate > created > beforeMount > mounted > on Ready
+
+## js 定时器
+```javascript
+// 设置定时器
+let timer = setInterval(()=>{
+	count.value++;
+},100);
+
+// 清除定时器
+clearInterval(timer);
+```
+
+
 ## js的for/forEach循环
 - for 使用同c++
 - forEach(item=>{})
