@@ -29,6 +29,14 @@
 				"navigationBarTitleText" : "emit的使用",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo4/demo4",
+			"style" : 
+			{
+				"navigationBarTitleText" : "声明周期钩子",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
