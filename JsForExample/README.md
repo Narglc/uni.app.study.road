@@ -7,6 +7,8 @@
 > 注意：onUpdated 不支持。
 
 ## uniapp 页面生命周期
+- onLoad		相当于setup
+- onReady		相当于onMounted
 
 ## js的for/forEach循环
 - for 使用同c++
