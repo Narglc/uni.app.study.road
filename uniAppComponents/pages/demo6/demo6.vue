@@ -10,16 +10,23 @@
 		<view>计数: {{count}}</view>
 		<view>-------</view>
 		<navigator url="/pages/demo4/demo4" open-type="reLaunch">跳转到demo4</navigator>
+		<view>-------</view>
+		<view class="box" v-for="(item,index) in 60">
+			第{{item}}页!
+		</view>
+		<view class="fixed" v-show="navShow">↑</view>
 	</view>
 </template>
 
 <script setup>
 import {onMounted, ref} from "vue";
-import {onLoad, onReady, onShow, onHide, onUnload} from "@dcloudio/uni-app";
+import {onLoad, onReady, onShow, onHide, onUnload, onPageScroll} from "@dcloudio/uni-app";
 
 const name = ref("张三");
 const age = ref(18);
 const scroll = ref(null);
+
+const navShow = ref(false);
 
 const count = ref(0)
 
@@ -64,9 +71,24 @@ onUnload(()=>{
 	console.log("onUnload卸载函数");
 })
 
+// 页面滚动
+onPageScroll((e)=>{
+	console.log(e);
+	navShow.value = e.scrollTop >= 200;
+})
 
 </script>
 
 <style lang="scss" scoped>
-
+.fixed{
+	width: 60px;
+	height: 60px;
+	background: orange;
+	// border-radius: 50%;
+	border: 1px solid green;
+	text-align: center;
+	position: fixed;
+	right:30px;
+	bottom:30px;
+}
 </style>
