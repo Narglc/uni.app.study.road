@@ -1,8 +1,10 @@
 <template>
 	<view class="layout">
-		<view class="header">Header区域</view>
+		<view class="header">
+			<slot name="header"></slot>
+		</view>
 		<view class="main">
-			<slot></slot>
+			<slot name="main"></slot>
 		</view>
 		<view class="footer">底部区域</view>
 	</view>

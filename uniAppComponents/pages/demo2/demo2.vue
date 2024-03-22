@@ -1,12 +1,17 @@
 <template>
 	<view class="">
 		<jac-layout>
-			<view class="box1">
-				box1
-			</view>
-			<view class="box2">
-				box2
-			</view>
+			<template #header>
+				首页头部2
+			</template>
+			<template #main>
+				<view class="box1">
+					box1
+				</view>
+				<view class="box2">
+					box2
+				</view>
+			</template>
 		</jac-layout>
 	</view>
 </template>
