@@ -8,12 +8,14 @@
 		<navigator url="/pages/demo5/demo5">跳转到demo5</navigator>
 		<view>-------</view>
 		<view>计数: {{count}}</view>
+		<view>-------</view>
+		<navigator url="/pages/demo4/demo4" open-type="reLaunch">跳转到demo4</navigator>
 	</view>
 </template>
 
 <script setup>
-import {ref} from "vue";
-import {onLoad, onReady, onShow, onHide} from "@dcloudio/uni-app";
+import {onMounted, ref} from "vue";
+import {onLoad, onReady, onShow, onHide, onUnload} from "@dcloudio/uni-app";
 
 const name = ref("张三");
 const age = ref(18);
@@ -40,6 +42,7 @@ onShow(()=>{
 	},100)
 })
 
+// 使用 navigator 跳转时/切到后台时，会 onHide
 onHide(()=>{
 	console.log("onHide函数");
 	// 清除定时器
@@ -50,6 +53,16 @@ onReady(()=>{
 	console.log("onReady函数:@scroll:",scroll.value);
 })
 
+
+onMounted(()=>{
+	console.log("onMounted函数");
+})
+
+// 左上角返回时，会 onUnload
+// 或者navigator的属性 open-type=reLaunch时，会执行
+onUnload(()=>{
+	console.log("onUnload卸载函数");
+})
 
 
 </script>

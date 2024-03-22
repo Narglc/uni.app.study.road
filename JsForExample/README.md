@@ -21,7 +21,7 @@ onLoad > onShow > onReady
 
 **包含组件的页面**
 
-onLoad > onShow > beforeCreate > created > beforeMount > mounted > on Ready
+onLoad > onShow > onBeforeMount > onReady > onMounted
 
 ## js 定时器
 ```javascript
