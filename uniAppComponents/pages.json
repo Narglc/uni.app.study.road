@@ -10,7 +10,7 @@
 			"path" : "pages/demo1/demo1",
 			"style" : 
 			{
-				"navigationBarTitleText" : "demo1",
+				"navigationBarTitleText" : "slot使用1",
 				"enablePullDownRefresh" : false
 			}
 		},
@@ -18,7 +18,15 @@
 			"path" : "pages/demo2/demo2",
 			"style" : 
 			{
-				"navigationBarTitleText" : "demo2",
+				"navigationBarTitleText" : "slot使用2",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo3/demo3",
+			"style" : 
+			{
+				"navigationBarTitleText" : "emit的使用",
 				"enablePullDownRefresh" : false
 			}
 		}
