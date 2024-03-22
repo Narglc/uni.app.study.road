@@ -5,12 +5,13 @@
 		<scroll-view scroll-x scroll-y="true" class="scroll" ref="scroll">
 			<view></view>
 		</scroll-view>
+		<navigator url="/pages/demo5/demo5">跳转到demo5</navigator>
 	</view>
 </template>
 
 <script setup>
 import {ref} from "vue";
-import {onLoad, onReady} from "@dcloudio/uni-app";
+import {onLoad, onReady, onShow, onHide} from "@dcloudio/uni-app";
 
 const name = ref("张三");
 const age = ref(18);
@@ -23,8 +24,16 @@ onLoad((evt)=>{
 	age.value = evt.age
 })
 
+onShow(()=>{
+	console.log("onShow函数");
+})
+
+onHide(()=>{
+	console.log("onHide函数");
+})
+
 onReady(()=>{
-	console.log("scroll:",scroll.value);
+	console.log("onReady函数:@scroll:",scroll.value);
 })
 
 </script>

@@ -9,6 +9,8 @@
 ## uniapp 页面生命周期
 - onLoad		相当于setup
 - onReady		相当于onMounted
+- onShow		每次页面显示时,都会显示
+- onHide		从当前页面跳转开时,会被调用[eg.切后台]
 
 ## js的for/forEach循环
 - for 使用同c++
