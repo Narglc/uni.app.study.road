@@ -42,7 +42,15 @@
 			"path" : "pages/demo5/demo5",
 			"style" : 
 			{
-				"navigationBarTitleText" : "demo5",
+				"navigationBarTitleText" : "组件生命周期",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo6/demo6",
+			"style" : 
+			{
+				"navigationBarTitleText" : "页面生命周期",
 				"enablePullDownRefresh" : false
 			}
 		}

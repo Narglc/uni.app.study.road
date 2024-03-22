@@ -1,5 +1,12 @@
 # uniapp 笔记
 
+## uniapp 组件生命周期
+- setup			组件创建时运行
+- onMounted		挂载在DOM时运行
+- onUnmounted	元素销毁时运行
+> 注意：onUpdated 不支持。
+
+## uniapp 页面生命周期
 
 ## js的for/forEach循环
 - for 使用同c++
