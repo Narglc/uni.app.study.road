@@ -1,16 +1,26 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/classify/classify",
+			"style" : 
+			{
+				"navigationBarBackgroundColor": "#F2E6DE",	// 此处设置可覆盖全局配置
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "分类说明",
+				"enablePullDownRefresh" : false,
+				"navigationStyle": "custom" 				// 不显示导航栏
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "这里的权重更高，页面更高"		// 此处比globalStyle.navigationBarTitleText权重更大
 			}
 		},
 		{
-			"path" : "pages/classify/classify",
-			"style" : 
-			{
-				"enablePullDownRefresh" : false
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "个人中心"		// 此处比globalStyle.navigationBarTitleText权重更大
 			}
 		}
 	],
