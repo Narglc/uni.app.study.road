@@ -20,7 +20,7 @@ onReachBottom(()=>{
 function show(){
 	uni.showToast({
 		title:"失败失败失败一次两",	// title在 icon=success时最多可以显示7个汉字长度，想要显示更多时可设置icon=none
-		// icon:"none"		// success, fail
+		// icon:"none"		// success, fail, loading
 		"image":"../../static/images/xxmLogo.png",
 		// mask:true,
 		// duration:3000,
