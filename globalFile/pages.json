@@ -3,15 +3,25 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "这里的权重更高，页面更高"		// 此处比globalStyle.navigationBarTitleText权重更大
+			}
+		},
+		{
+			"path" : "pages/classify/classify",
+			"style" : 
+			{
+				"enablePullDownRefresh" : false
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "page.json页面说明",
+		"navigationBarBackgroundColor": "#2B9939",
+		"backgroundColor": "#F8F8F8",		// 只支持微信小程序
+		"enablePullDownRefresh": true
+		
+		// "navigationStyle": "custom"  // custom 自定义导航栏，会导致上述设置均失效
 	},
 	"uniIdRouter": {}
 }

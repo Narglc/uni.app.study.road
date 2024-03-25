@@ -1,5 +1,14 @@
 # uniapp 笔记
 
+## pages.json 页面说明
+```json
+"navigationStyle": "custom"  // custom 自定义导航栏，会导致上述设置均失效
+```
+
+## static & common
+- static 文件夹内地文件全部会被打包到小程序中
+- common 不需要打包的文件可放在此处
+
 ## css 尺寸[像素,rpx]
 ```scss
 width: 200px;		// 绝对大小，屏幕像素
