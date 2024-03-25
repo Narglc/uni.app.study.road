@@ -9,11 +9,13 @@
 </template>
 
 <script setup>
-	
+uni.showNavigationBarLoading()
+
 setTimeout(()=>{
 	uni.setNavigationBarTitle({
 		title:"动态标题,根据页面信息更新"
-	})
+	});
+	uni.hideNavigationBarLoading()
 },2000)
 
 function remove(){

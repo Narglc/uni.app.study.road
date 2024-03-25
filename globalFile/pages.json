@@ -19,8 +19,8 @@
 				"navigationBarBackgroundColor": "#F2E6DE",	// 此处设置可覆盖全局配置
 				"navigationBarTextStyle": "black",
 				"navigationBarTitleText": "分类说明",
-				"enablePullDownRefresh" : false,
-				"navigationStyle": "custom" 				// 不显示导航栏
+				"enablePullDownRefresh" : false
+				// "navigationStyle": "custom" 				// 不显示导航栏
 			}
 		}
 	],
