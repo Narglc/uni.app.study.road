@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		
+		用户中心
 	</view>
 </template>
 
