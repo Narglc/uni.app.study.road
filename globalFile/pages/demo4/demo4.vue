@@ -26,15 +26,23 @@ let rspData = ref([])
 // }
 
 // promise的方式
-function request(){
-	uni.request({
-		url:"https://jsonplaceholder.typicode.com/posts",
-	}).then(res=>{
-		console.log(res);
-		rspData.value = res.data;
-	})
-}
+// function request(){
+// 	uni.request({
+// 		url:"https://jsonplaceholder.typicode.com/posts",
+// 	}).then(res=>{
+// 		console.log(res);
+// 		rspData.value = res.data;
+// 	})
+// }
 
+// [最常用]promise的异步同步化 async...await
+async function request(){
+	let res = await uni.request({
+		url:"https://jsonplaceholder.typicode.com/posts"
+	})
+	console.log(res);
+	rspData.value = res.data;
+}
 
 request()
 
