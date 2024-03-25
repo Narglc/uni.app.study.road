@@ -5,6 +5,14 @@
 </template>
 
 <script setup>
+import {onShow} from "@dcloudio/uni-app"
+
+onShow(()=>{
+	uni.hideTabBarRedDot({
+		index:2
+	})
+})
+	
 uni.showLoading({
 	title:"加载中",
 	mask:true,
