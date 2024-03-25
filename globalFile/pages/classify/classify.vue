@@ -9,6 +9,13 @@
 </template>
 
 <script setup>
+	
+setTimeout(()=>{
+	uni.setNavigationBarTitle({
+		title:"动态标题,根据页面信息更新"
+	})
+},2000)
+
 function remove(){
 	console.log("remove");
 	uni.showModal({
