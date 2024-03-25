@@ -13,5 +13,9 @@
 </script>
 
 <style>
-	/*每个页面公共css */
+/*每个页面公共css */
+/* 样式导入 
+	@ 为根目录
+*/
+@import "@/common/css/style.css"
 </style>

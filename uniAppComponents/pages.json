@@ -53,6 +53,14 @@
 				"navigationBarTitleText" : "页面生命周期",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/demo7/demo7",
+			"style" : 
+			{
+				"navigationBarTitleText" : "css的尺寸说明",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
