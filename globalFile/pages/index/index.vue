@@ -4,6 +4,9 @@
 		<button @click="show">显示</button>
 		<button @click="hide">隐藏</button>
 		<image class="logo" src="/static/images/logo.png"></image>
+		
+		<button type="primary" @click="stop">停止</button>
+		
 		<view class="" v-for="item in 100">
 			{{ item }}
 		</view>
@@ -34,6 +37,17 @@ function hide(){
 	uni.hideToast()
 }
 
+
+// setTimeout(()=>{
+// 	uni.startPullDownRefresh({
+		
+// 	})
+// },5000)
+
+function stop(){
+	// 关闭下拉更新
+	uni.stopPullDownRefresh()
+}
 
 
 </script>

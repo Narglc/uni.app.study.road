@@ -3,7 +3,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "这里的权重更高，页面更高"		// 此处比globalStyle.navigationBarTitleText权重更大
+				"navigationBarTitleText": "这里的权重更高，页面更高"		,// 此处比globalStyle.navigationBarTitleText权重更大
+				"enablePullDownRefresh" : true							// 下拉刷新
 			}
 		},
 		{
@@ -21,6 +22,22 @@
 				"navigationBarTitleText": "分类说明",
 				"enablePullDownRefresh" : false
 				// "navigationStyle": "custom" 				// 不显示导航栏
+			}
+		},
+		{
+			"path" : "pages/demo2/demo2",
+			"style" : 
+			{
+				"navigationBarTitleText" : "demo2",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/demo1/demo1",
+			"style" : 
+			{
+				"navigationBarTitleText" : "demo1",
+				"enablePullDownRefresh" : false
 			}
 		}
 	],
