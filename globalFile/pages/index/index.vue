@@ -1,26 +1,19 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<view class="" v-for="item in 100">
+			{{ item }}
 		</view>
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+<script setup>
+import {onReachBottom} from "@dcloudio/uni-app"
 
-		},
-		methods: {
+onReachBottom(()=>{
+	console.log("到底了！！");
+})
 
-		}
-	}
 </script>
 
 <style>
