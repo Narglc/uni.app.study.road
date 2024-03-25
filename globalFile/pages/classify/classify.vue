@@ -3,6 +3,8 @@
 		分类页面
 		<button @click="remove">删除</button>
 		<button @click="add">添加</button>
+		
+		<button @click="select">学历</button>
 	</view>
 </template>
 
@@ -49,6 +51,20 @@ function add(){
 		}
 	})
 }
+
+let studyLevel = ["高中","大专","本科", "研究生"]
+
+function select(){
+	uni.showActionSheet({
+		title:"请选择你的学历:",
+		itemList:studyLevel,
+		success:res=>{
+			console.log(studyLevel[res.tapIndex]);
+		}
+	})
+}
+
+
 </script>
 
 <style lang="scss" scoped>
