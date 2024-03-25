@@ -18,7 +18,7 @@
 	// width: 50vw;			// 可视范围的50%
 	width: 130rpx;			// 响应式像素：一种根据屏幕宽度自适应的动态单位。以 750 宽的屏幕为基准，750rpx 恰好为屏幕宽度。
 	height: 130rpx;
-	background: $custom-color-3;	// 可使用自定义的颜色，定义在uni.css中；新定义后需要重启项目生效
+	background: $custom-color-2;	// 可使用自定义的颜色，定义在uni.css中；新定义后需要重启项目生效
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 150rpx;
