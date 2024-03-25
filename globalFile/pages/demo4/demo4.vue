@@ -13,16 +13,28 @@
 <script setup>
 import {ref} from "vue";
 let rspData = ref([])
-	
+
+// 异步方式success
+// function request(){
+// 	uni.request({
+// 		url:"https://jsonplaceholder.typicode.com/posts",
+// 		success: res => {
+// 			console.log(res);
+// 			rspData.value = res.data;
+// 		}
+// 	})
+// }
+
+// promise的方式
 function request(){
 	uni.request({
 		url:"https://jsonplaceholder.typicode.com/posts",
-		success: res => {
-			console.log(res);
-			rspData.value = res.data;
-		}
+	}).then(res=>{
+		console.log(res);
+		rspData.value = res.data;
 	})
 }
+
 
 request()
 
