@@ -11,9 +11,8 @@
 		</view>
 		
 		<view class="float">
-			<view class="item">刷新</view>
-			<view class="item">顶部 </view>
-			<view class="box"></view>
+			<view class="item" @click="onRefresh">刷新</view>
+			<view class="item" @click="onTop">顶部 </view>
 		</view>
 	</view>
 </template>
@@ -93,6 +92,20 @@ onPullDownRefresh(()=>{
 	network();
 })
 
+// 点击刷新
+const onRefresh = function(){
+	console.log("onRefresh");
+	uni.startPullDownRefresh();
+}
+
+// 返回顶部
+const onTop = function(){
+	console.log("onTop");
+	uni.pageScrollTo({
+		scrollTop:0,
+		duration:150,
+	})
+}
 </script>
 
 <style lang="scss" scoped>
@@ -130,6 +143,7 @@ onPullDownRefresh(()=>{
 		position: fixed;
 		right: 30rpx;
 		bottom: 80rpx;
+		padding-bottom: env(safe-are-inset-bottom);
 		.item{
 			width: 90rpx;
 			height: 90rpx;
@@ -143,10 +157,6 @@ onPullDownRefresh(()=>{
 			justify-content: center;
 			
 			border: 1px solid #eee;
-		}
-		.box{
-			border: 1px solid red;
-			height: env(safe-are-inset-bottom);		// 小程序的底部安全区，手机下部不可触碰原因
 		}
 	}
 }
