@@ -1,11 +1,12 @@
 <template>
 	<view class="container">
 		<view class="layout">
-			<view class="box" v-for="(item,index) in pets" :key="item.id">
+			<view class="box" v-for="(item,index) in pets" :key="item._id">
 				<view class="pic">
-					<image :src="item.url" mode="widthFix"></image>
+					<image :src="item.url" mode="widthFix" @click="onPreview(index, item)"></image>
 				</view>
-				<view class="text">{{item.id}}</view>
+				<view class="text">{{item.content}}</view>
+				<view class="author">————{{item.author}}</view>
 			</view>
 		</view>
 	</view>
@@ -16,16 +17,27 @@ import { ref } from "vue";
 
 const pets = ref([])
 
+const onPreview = function(index){
+	uni.previewImage({
+		current:index,
+		urls:pets.value.map(item=>{
+			return item.url;
+		}),
+	})
+}
+
+// 发送网络请求
 function network(){
 	uni.request({
-		url:"https://api.thecatapi.com/v1/images/search",
+		url:"https://tea.qingnian8.com/tools/petShow",
 		data:{
-			limit:10,
+			size:10,
+			type:"all", // 支持 all/dog/cat
 		},
 		method:"GET",
 	}).then(res=>{
 		console.log(res);
-		pets.value = res.data
+		pets.value = res.data.data
 	})
 }
 
@@ -48,11 +60,19 @@ network()
 				}
 			}
 			.text{
-				padding: 30rpx;
+				padding: 15rpx 30rpx 0;
 				margin-left: auto;
 				margin-right: auto;
 				text-align: center;
-				font-weight: bold;
+				// font-weight: bold;
+				font-size: 30rpx;
+				color:#333
+			}
+			.author{
+				padding: 0 30rpx;
+				text-align: right;
+				font-size: 28rpx;
+				color:#888
 			}
 		}
 	}
