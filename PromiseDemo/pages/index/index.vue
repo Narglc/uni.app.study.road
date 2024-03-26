@@ -8,7 +8,21 @@
 import {onLoad} from  "@dcloudio/uni-app"
 
 onLoad(()=>{
-	// promise 的链式调用 [2.0版本]
+	uni.showLoading({
+		title:"数据加载中..."
+	})
+	
+	let p1 = getNav()
+	let p2 = getList(51)
+	let p3 = getComments(251)
+	
+	Promise.all([p1,p2,p3]).then(res=>{
+		uni.hideLoading();
+		console.log(res);
+	})
+	
+	
+/* 	// promise 的链式调用 [异步请求2.0版本]
 	getNav().then(res=>{
 		let id = res.data[0].id;
 		console.log(id);
@@ -20,7 +34,7 @@ onLoad(()=>{
 		return getComments(id)
 	}).then(res=>{
 		console.log(res);
-	})
+	}) */
 	
 /* 	// promise使用
 	let p = new Promise((resolve,reject)=>{

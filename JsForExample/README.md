@@ -340,3 +340,91 @@ p.then(res=>{
 	console.log(err);
 })
 ```
+
+### promise的链式调用 [异步请求2.0版本]
+
+```javascript
+// promise 的链式调用 [异步请求2.0版本]
+getNav().then(res=>{
+	let id = res.data[0].id;
+	console.log(id);
+	// 返回的也是promise,可以继续使用promise
+	return getList(id)
+}).then(res=>{
+	let id = res.data[0].id;
+	console.log(id);
+	return getComments(id)
+}).then(res=>{
+	console.log(res);
+}) 
+
+// 获取分类列表id
+function getNav(){
+	return new Promise((resolve,reject)=>{
+		uni.request({
+			url:"https://ku.qingnian8.com/dataApi/news/navlist.php",
+			success:res=>{
+				resolve(res)
+			},
+			fail:err=>{
+				reject(err)
+			}
+		})	
+	})
+
+}
+
+// 根据分类id获取该分类下的所有文章
+function getList(id){
+	return new Promise((resolve,reject)=>{
+		uni.request({
+			url:"https://ku.qingnian8.com/dataApi/news/newslist.php",
+			data:{
+			  cid:id
+			},
+			success:res=>{
+			  resolve(res)
+			},
+			fail:err=>{
+				reject(err)
+			}
+		})
+	})
+}
+
+// 根据文章id找到该文章下的评论
+function getComments(id){
+	return new Promise((resolve,reject)=>{
+		uni.request({
+		  url:"https://ku.qingnian8.com/dataApi/news/comment.php",
+		  data:{
+			aid:id
+		  },
+		  success:res=>{
+			resolve(res)
+		  },
+		  fail:err=>{
+			  reject(err)
+		  }
+		})
+	})
+}
+```
+
+### Promise的异步请求同步化
+
+```javascript
+	uni.showLoading({
+	title:"数据加载中..."
+})
+
+let p1 = getNav()
+let p2 = getList(51)
+let p3 = getComments(251)
+
+Promise.all([p1,p2,p3]).then(res=>{
+	uni.hideLoading();
+	console.log(res);
+})
+
+```
