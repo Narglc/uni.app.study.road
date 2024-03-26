@@ -9,6 +9,12 @@
 				<view class="author">————{{item.author}}</view>
 			</view>
 		</view>
+		
+		<view class="float">
+			<view class="item">刷新</view>
+			<view class="item">顶部 </view>
+			<view class="box"></view>
+		</view>
 	</view>
 </template>
 
@@ -120,5 +126,30 @@ onPullDownRefresh(()=>{
 			}
 		}
 	}
+	.float{
+		position: fixed;
+		right: 30rpx;
+		bottom: 80rpx;
+		.item{
+			width: 90rpx;
+			height: 90rpx;
+			background: rgba(255,255,255,0.9);
+			border-radius: 50%;
+			margin-bottom: 20rpx;
+			
+			// 简单的将一个内容居中
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			border: 1px solid #eee;
+		}
+		.box{
+			border: 1px solid red;
+			height: env(safe-are-inset-bottom);		// 小程序的底部安全区，手机下部不可触碰原因
+		}
+	}
 }
+
+
 </style>
