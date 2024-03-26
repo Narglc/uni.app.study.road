@@ -14,6 +14,14 @@
 
 <script setup>
 import { ref } from "vue";
+import {onReachBottom} from "@dcloudio/uni-app"
+
+
+// 数组合并的技巧：解构
+let arr1 = [1,2,3]
+let arr2 = [4,5,6]
+console.log([...arr1, ...arr2]);
+
 
 const pets = ref([])
 
@@ -28,20 +36,48 @@ const onPreview = function(index){
 
 // 发送网络请求
 function network(){
+	// uni.showLoading()
+	uni.showNavigationBarLoading()
+	
 	uni.request({
 		url:"https://tea.qingnian8.com/tools/petShow",
 		data:{
-			size:10,
+			size:5,
 			type:"all", // 支持 all/dog/cat
 		},
 		method:"GET",
 	}).then(res=>{
-		console.log(res);
-		pets.value = res.data.data
+		if(res.data.errCode == 0){
+			pets.value = [...pets.value,...res.data.data]
+		}else if(res.data.errCode == 400){
+			uni.showToast({
+				title:res.data.errMsg,
+				icon:"none",
+				duration:3000
+			})
+		}
+		
+	}).catch(err=>{
+		// 接口访问有问题
+		console.log(err);
+		uni.showToast({
+			title: "请求有无，请重新刷新",
+			icon:"none"
+		})
+	}).finally(()=>{
+		// 无论成功失败都执行此部分代码
+		// uni.hideLoading()
+		uni.hideNavigationBarLoading()
 	})
 }
 
 network()
+
+// 触底加载更多
+onReachBottom(()=>{
+	console.log("到底了！！");
+	network();
+})
 
 </script>
 
