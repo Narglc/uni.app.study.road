@@ -428,3 +428,22 @@ Promise.all([p1,p2,p3]).then(res=>{
 })
 
 ```
+
+### async/await 异步处理同步化
+- await,async, 两个必须成对出现
+- await 为阻塞请求
+```javascript
+onLoad(async ()=>{
+	let id,res;
+	
+	// ES7 的await,async, 两个必须成对出现
+	res = await getNav();		// 遇到 await 必须等待其执行完，即阻塞等待
+	id = res.data[0].id
+	
+	res = await getList(id)
+	id = res.data[0].id
+	
+	res = await getComments(id)
+	console.log(res);
+})
+```
