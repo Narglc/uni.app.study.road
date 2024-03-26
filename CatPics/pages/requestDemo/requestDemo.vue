@@ -1,5 +1,12 @@
 <template>
 	<view class="container">
+		<view class="menu">
+			<uni-segmented-control :current="curKind" :values="petsKinds" @clickItem="onClickItem" styleType="button" activeColor="#2D9839"></uni-segmented-control>
+			<view class="">
+				 {{curKind}}-{{ getType()}}
+			</view>
+		</view>
+		 
 		<view class="layout">
 			<view class="box" v-for="(item,index) in pets" :key="item._id">
 				<view class="pic">
@@ -38,6 +45,14 @@ console.log([...arr1, ...arr2]);
 
 const pets = ref([])
 
+const curKind = ref(0);
+const petsKinds = ['全部', '只看猫猫','只看狗狗'];
+
+function getType(){
+	let petTypes = [ 'all', 'cat', 'dog'];
+	return petTypes[curKind.value];
+}
+
 const onPreview = function(index){
 	uni.previewImage({
 		current:index,
@@ -56,7 +71,7 @@ function network(){
 		url:"https://tea.qingnian8.com/tools/petShow",
 		data:{
 			size:5,
-			type:"all", // 支持 all/dog/cat
+			type:getType(), // 支持 all/dog/cat
 		},
 		method:"GET",
 	}).then(res=>{
@@ -114,10 +129,21 @@ const onTop = function(){
 		duration:150,
 	})
 }
+
+const onClickItem = function(e){
+	console.log("onClickItem:",e);
+	curKind.value = e.currentIndex;
+	pets.value = [];
+	network();
+}
+
 </script>
 
 <style lang="scss" scoped>
 .container{
+	.menu{
+		padding: 50rpx 50rpx 0;
+	}
 	.layout{
 		padding: 50rpx;
 		.box{

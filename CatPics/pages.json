@@ -19,7 +19,8 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "request综合案例",
-				"enablePullDownRefresh" : true
+				"enablePullDownRefresh" : true,
+				"navigationBarBackgroundColor": "#2D9839"
 			}
 		},
 		{
