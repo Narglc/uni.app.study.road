@@ -1,0 +1,73 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/recommond/recommond",
+			"style" : 
+			{
+				"navigationBarTitleText" : "recommond",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path" : "pages/requestDemo/requestDemo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "requestDemo",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/classify/classify",
+			"style" : 
+			{
+				"navigationBarTitleText" : "classify",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/userinfo/userinfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "userinfo",
+				"enablePullDownRefresh" : false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/recommond/recommond",
+				"text":"推荐",
+				"iconPath": "static/images/tabBar/home.png",
+				"selectedIconPath": "static/images/tabBar/home-h.png"
+			},
+			{
+				"pagePath": "pages/classify/classify",
+				"text":"分类",
+				"iconPath": "static/images/tabBar/classify.png",
+				"selectedIconPath": "static/images/tabBar/classify-h.png"
+
+			},
+			{
+				"pagePath": "pages/userinfo/userinfo",
+				"text":"我的",
+				"iconPath": "static/images/tabBar/user.png",
+				"selectedIconPath": "static/images/tabBar/user-h.png"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}
