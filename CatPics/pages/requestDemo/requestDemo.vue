@@ -1,10 +1,7 @@
 <template>
 	<view class="container">
 		<view class="menu">
-			<uni-segmented-control :current="curKind" :values="petsKinds" @clickItem="onClickItem" styleType="button" activeColor="#2D9839"></uni-segmented-control>
-			<view class="">
-				 {{curKind}}-{{ getType()}}
-			</view>
+			<uni-segmented-control :current="current" :values="values" @clickItem="onClickItem" styleType="button" activeColor="#2D9839"></uni-segmented-control>
 		</view>
 		 
 		<view class="layout">
@@ -33,7 +30,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import {onReachBottom,onPullDownRefresh} from "@dcloudio/uni-app"
 
 
@@ -45,12 +42,19 @@ console.log([...arr1, ...arr2]);
 
 const pets = ref([])
 
-const curKind = ref(0);
-const petsKinds = ['全部', '只看猫猫','只看狗狗'];
+const current = ref(0);
+const classify = [
+	{key:"all", value:"全部"},
+	{key:"dog",value:"狗狗"},
+	{key:"cat",value:"猫猫"},	
+];
 
-function getType(){
-	let petTypes = [ 'all', 'cat', 'dog'];
-	return petTypes[curKind.value];
+const values = computed(()=>{
+	return classify.map(item=>item.value)
+})
+
+const getType = function(){
+	return classify[current.value].key;
 }
 
 const onPreview = function(index){
@@ -132,7 +136,7 @@ const onTop = function(){
 
 const onClickItem = function(e){
 	console.log("onClickItem:",e);
-	curKind.value = e.currentIndex;
+	current.value = e.currentIndex;
 	pets.value = [];
 	network();
 }
