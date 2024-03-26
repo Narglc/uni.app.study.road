@@ -18,8 +18,8 @@
 			"path" : "pages/requestDemo/requestDemo",
 			"style" : 
 			{
-				"navigationBarTitleText" : "requestDemo",
-				"enablePullDownRefresh" : false
+				"navigationBarTitleText" : "request综合案例",
+				"enablePullDownRefresh" : true
 			}
 		},
 		{

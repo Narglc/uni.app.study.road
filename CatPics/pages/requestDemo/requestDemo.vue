@@ -14,7 +14,7 @@
 
 <script setup>
 import { ref } from "vue";
-import {onReachBottom} from "@dcloudio/uni-app"
+import {onReachBottom,onPullDownRefresh} from "@dcloudio/uni-app"
 
 
 // 数组合并的技巧：解构
@@ -68,6 +68,8 @@ function network(){
 		// 无论成功失败都执行此部分代码
 		// uni.hideLoading()
 		uni.hideNavigationBarLoading()
+		// 请求完成后停止下拉刷新动画
+		uni.stopPullDownRefresh()
 	})
 }
 
@@ -76,6 +78,12 @@ network()
 // 触底加载更多
 onReachBottom(()=>{
 	console.log("到底了！！");
+	network();
+})
+
+// 下拉刷新，需要配合pages.json开启配置
+onPullDownRefresh(()=>{
+	pets.value = [];
 	network();
 })
 
