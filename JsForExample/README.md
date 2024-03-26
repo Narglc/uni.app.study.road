@@ -310,3 +310,33 @@ console.log("arr1中是否包含了arr2所有元素:",arr2.every(one=>arr1.inclu
 console.log("arr1中是否包含了arr3所有元素:",arr3.every(one=>arr1.includes(one)));
 
 ```
+
+
+## promise 的使用 [处理异步]
+
+### 什么是promise?
+> promise是解决异步的方法，本质上是一个构造函数，可以用它实例化一个对象。对象身上有resolve、reject、all，原型上有then、catch方法。promise对象有三种状态：pending（初识状态/进行中）、resolved或fulfilled（成功）、rejected（失败） 作者：咸虾米_ https://www.bilibili.com/read/cv18799030/ 出处：bilibili
+
+```javascript
+	// promise使用
+let p = new Promise((resolve,reject)=>{
+	uni.request({
+		url:"https://ku.qingnian8.com/dataApi/news/navlist.php2",
+		success:res=>{
+		  resolve(res);
+		},
+		fail:err=>{
+			reject(err)
+		}
+	})
+})
+console.log(p);
+
+p.then(res=>{
+	// then 对应上方的resolve
+	console.log(res);
+}).catch(err=>{
+	// catch 对应上方的reject
+	console.log(err);
+})
+```
