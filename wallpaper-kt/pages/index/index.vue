@@ -28,13 +28,13 @@
 			<common-title></common-title>
 			<view class="content">
 				<scroll-view scroll-x>
-					<view class="box" v-for="(item,index) in 3" :key="index">
+					<view class="box" v-for="(item,index) in 10" :key="index">
 						<image src="../../common/images/preview1.jpg" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
 		</view>
-		
+
 	</view>
 </template>
 
@@ -113,17 +113,31 @@ const banners = [
 		
 	}
 	.select{
+		padding-top: 50rpx;
 		.content{
+			width: 720rpx;
+			margin-left: 30rpx;
+			margin-top: 30rpx;
 			scroll-view{
-				white-space: nowrap;
-				width: 100%;
+				white-space: nowrap;			// 横向轮播器必须 1
 			}
 			.box{
-				width: 600rpx;
-				height:500rpx;
-				border: 1px solid red;
+				width: 200rpx;
+				height:430rpx;
+				display: inline-block;			// 横向轮播器必须 2
+				margin-right: 15rpx;
+				image{
+					width: 100%;
+					height: 100%;
+					border-radius: 10rpx;
+
+				}
+			}
+			.box:last-child{
+				margin-right: 30rpx;
 			}
 		}
 	}
+
 }
 </style>
