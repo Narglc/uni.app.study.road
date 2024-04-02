@@ -1,5 +1,5 @@
 <template>
-	<view class="useLayout">
+	<view class="useLayout pageBg">
 		<view class="userInfo">
 			<view class="avatar">
 				<image src="../../static/xxmLogo.png" mode="aspectFill"></image>
@@ -136,6 +136,7 @@ const phoneHandle = function(){
 				padding: 0 30rpx;
 				height: 100rpx;
 				position: relative;					// 以row为基准加相对定位
+				background: #fff;
 				border-bottom: 1rpx solid #eee;
 				&:last-child{border-bottom: 0}
 				.left{
