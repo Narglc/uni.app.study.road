@@ -86,6 +86,9 @@ const contactHandle = function(){
 
 const phoneHandle = function(){
 	console.log("开始拨打电话");
+	uni.makePhoneCall({
+		phoneNumber:"114"
+	})
 }
 
 
@@ -158,7 +161,7 @@ const phoneHandle = function(){
 					top: 0;
 					height: 100rpx;
 					width: 100%;
-					opacity: 0.7;		// 增加完全透明
+					opacity: 0;		// 增加完全透明
 				}
 			}
 		}
