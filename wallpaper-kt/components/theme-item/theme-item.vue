@@ -1,16 +1,33 @@
 <template>
 	<view class="themeItem">
-		<navigator url="" class="box">
+		<navigator url="" class="box" v-if="!isMore">
 			<image class="pic" src="../../common/images/classify2.jpg" mode="aspectFill"></image>
 			<view class="mask">明星美女</view>
 			<view class="tab">3天前更新</view>
 		</navigator>
 		
 		<!-- <slot name="imgPreview"></slot> -->
+		<navigator url="" class="box more" v-if="isMore">
+			<image class="pic" src="../../common/images/more.jpg" mode="aspectFill"></image>
+			
+			<view class="mask">
+				<uni-icons type="more-filled" size="34" color="#fff"></uni-icons>
+				<text>更多</text>
+			</view>
+			
+		</navigator>
+		
 	</view>
 </template>
 
 <script setup>
+
+defineProps({
+	isMore:{
+		type:Boolean,
+		default:false
+	}
+})
 
 </script>
 
@@ -55,6 +72,16 @@
 		.pic{
 			width: 100%;
 			height: 100%;
+		}
+	}
+	.box.more{									// 既有box又有more的标签
+		.mask{
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+		}
+		.text{
+			font-size: 28rpx;
 		}
 	}
 }

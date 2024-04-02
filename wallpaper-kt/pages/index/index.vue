@@ -59,6 +59,7 @@
 						<image src="../../common/images/preview2.jpg" mode=""></image>
 					</template> -->
 				</theme-item>
+				<theme-item :isMore="true"></theme-item>
 			</view>
 			
 		</view>
