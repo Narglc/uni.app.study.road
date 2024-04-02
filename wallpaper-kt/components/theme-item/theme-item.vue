@@ -39,15 +39,17 @@
 			font-size: 30rpx;
 		}
 		.tab{
-			padding: 6rpx 14rpx;					// 字体周围的padding
-			border-radius: 0 0 20rpx 0;   			// 左上，右上，右下，左下
 			position: absolute;
 			top: 0;
 			left: 0;
 			font-size: 22rpx;
 			background: rgba(250,129,90,0.7);
 			backdrop-filter: blur(20rpx);
-			color:#fff
+			color:#fff;
+			padding: 6rpx 14rpx;					// 字体周围的padding
+			border-radius: 0 0 20rpx 0;   			// 左上，右上，右下，左下
+			transform: scale(0.8);					// 按比例缩小
+			transform-origin: left top;				// 以左上角为基准缩小
 		}
 		
 		.pic{
