@@ -52,6 +52,15 @@
 					<navigator url="" class="more">More+</navigator>
 				</template>
 			</common-title>
+			
+			<view class="content">
+				<theme-item v-for="(item,index) of 8">
+<!-- 					<template #imgPreview>
+						<image src="../../common/images/preview2.jpg" mode=""></image>
+					</template> -->
+				</theme-item>
+			</view>
+			
 		</view>
 
 	</view>
@@ -170,6 +179,20 @@ const banners = [
 		.more{
 			font-size: 32rpx;
 			color:#888
+		}
+		.content{
+			margin-top: 30rpx;
+			padding: 0 30rpx;
+
+			display: grid;							// 擅长处理网格布局
+			gap:15rpx;								// 间距15rpx
+			grid-template-columns: repeat(3,1fr);	//一行显式3个
+			
+			image{
+				width: 100%;
+				height: 100%;
+				border-radius: 10rpx;
+			}
 		}
 	}
 
