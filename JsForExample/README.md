@@ -1,5 +1,15 @@
 # uniapp 笔记
 
+## css 常用
+```scss
+
+# 设置上下左右均居中
+display: flex;
+align-items: center;
+justify-content: center;
+```
+
+
 ## pages.json 页面说明
 ```json
 "navigationStyle": "custom"  // custom 自定义导航栏，会导致上述设置均失效
