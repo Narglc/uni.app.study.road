@@ -114,7 +114,7 @@ const banners = [
 			align-items: center;
 			justify-content: center;
 			.text{
-				color: #28b389;
+				color: $brand-theme-color;
 				font-weight: 600;
 				font-size: 28rpx;
 				display: flex;
@@ -167,7 +167,7 @@ const banners = [
 			}
 		}
 		.date{
-			color:#28b389;
+			color:$brand-theme-color;
 			display: flex;
 			align-items: center;
 			.text{
