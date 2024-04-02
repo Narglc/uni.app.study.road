@@ -142,7 +142,7 @@ const banners = [
 		
 	}
 	.select{
-		padding-top: 50rpx;
+		padding: 50rpx 0;
 		.content{
 			width: 720rpx;
 			margin-left: 30rpx;
