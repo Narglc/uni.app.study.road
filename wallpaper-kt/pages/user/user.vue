@@ -39,6 +39,14 @@
 						<view class="text"></view>
 						<uni-icons type="right" size="10" color="#aaa"></uni-icons>
 					</view>
+					<!-- #ifdef MP -->
+					<button open-type="contact" @click="contactHandle">联系客服</button>
+					<!-- #endif -->
+					
+					<!-- #ifndef MP -->
+					<button @click="phoneHandle">拨打电话</button>
+					<!-- #endif -->
+
 				</view>
 			</view>
 		</view>
@@ -71,6 +79,15 @@
 </template>
 
 <script setup>
+
+const contactHandle = function(){
+	console.log("点击了联系客服按钮");
+}
+
+const phoneHandle = function(){
+	console.log("开始拨打电话");
+}
+
 
 </script>
 
@@ -115,6 +132,7 @@
 				align-items: center;
 				padding: 0 30rpx;
 				height: 100rpx;
+				position: relative;					// 以row为基准加相对定位
 				border-bottom: 1rpx solid #eee;
 				&:last-child{border-bottom: 0}
 				.left{
@@ -133,6 +151,14 @@
 						padding-right: 20rpx;
 						color: #aaa;
 					}
+				}
+				button{
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100rpx;
+					width: 100%;
+					opacity: 0.7;		// 增加完全透明
 				}
 			}
 		}
