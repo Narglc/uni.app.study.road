@@ -6,7 +6,7 @@
 			</swiper-item>
 		</swiper>
 		<view class="mask" v-if="maskState">
-			<view class="goBack" :style="{top:getStatusBarHeight()+'px'}">
+			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
 				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
 			</view>
 			<view class="count">3 / 9</view>
@@ -146,6 +146,11 @@ const submitScore = ()=>{
 // 遮罩层状态
 const maskChange = function(){
 	maskState.value = !maskState.value;
+}
+
+// 返回上一页
+const goBack = ()=>{
+	uni.navigateBack();
 }
 
 </script>
