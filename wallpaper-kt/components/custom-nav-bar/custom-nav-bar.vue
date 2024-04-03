@@ -1,0 +1,70 @@
+<template>
+	<view class="layout">
+		<view class="narvar">
+			<view class="statusBar"></view>
+			<view class="titleBar">
+				<view class="title">标题</view>
+				<view class="search">
+					<uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
+					<text class="text">搜索</text>
+				</view>
+			</view>
+		</view>
+		<view class="fill">
+			
+		</view>
+	</view>
+</template>
+
+<script setup>
+
+
+</script>
+
+<style lang="scss" scoped>
+.layout{
+	.narvar{
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10;
+		background:
+		linear-gradient(to bottom, rgba(0,0,0,0),#fff 400rpx),		// rgba(0,0,0,0) 也可以使用 transparent表示
+		linear-gradient(to right, #beecd8 20%, #F4e2d8);			// 双重渐变
+		.statusBar{
+			border: 1px solid red;
+		}
+		.titleBar{
+			display: flex;
+			align-items: center;
+			padding: 0 30rpx;
+			// border: 1px solid green;
+			.title{
+				font-size: 22px;
+				font-weight: 700;
+				color:$text-font-color-1;
+			}
+			.search{
+				width: 200rpx;
+				height: 50rpx;
+				border-radius: 60rpx;
+				background: rgba(255,255,255,0.4);
+				border: 1px solid #fff;
+				margin-left: 30rpx;
+				color: #999;
+				font-size: 28rpx;
+				display: flex;
+				align-items: center;
+				.icon{
+					margin-left: 5rpx;
+				}
+				.text{
+					padding-left: 10rpx;
+				}
+			}
+		}
+	}
+}
+</style>
