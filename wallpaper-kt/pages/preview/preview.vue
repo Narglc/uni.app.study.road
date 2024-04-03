@@ -22,7 +22,7 @@
 					<uni-icons type="info" size="28"></uni-icons>
 					<view class="text">信息</view>
 				</view>
-				<view class="box">
+				<view class="box" @click="clickScore">
 					<uni-icons type="star" size="28"></uni-icons>
 					<view class="text">5分</view>
 				</view>
@@ -87,6 +87,26 @@
 			</view>
 		</uni-popup>
 		
+		<uni-popup ref="scorePopup" :is-mask-click="false">
+			<view class="scorePopup">
+				<view class="popHeader">
+					<view></view>
+					<view class="title">壁纸评分</view>
+					<view class="close" @click="closeScorePopup">
+						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+					</view>
+				</view>
+				<view class="content">
+					<uni-rate v-model="userScore" allowHalf></uni-rate>
+					<text class="text">{{userScore}}</text>
+				</view>
+				
+				<view class="footer">
+					<button @click="submitScore" :disabled="userScore == 0" type="default" size="mini" plain>确认评分</button>
+				</view>
+			</view>
+		</uni-popup>
+		
 	</view>
 </template>
 
@@ -95,6 +115,8 @@ import {ref} from "vue";
 
 const maskState = ref(true);
 const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
+const scorePopup = ref(null);
+const userScore = ref(0);
 
 // 点击info弹窗
 const clickInfo = ()=>{
@@ -104,6 +126,20 @@ const clickInfo = ()=>{
 // 关闭info弹窗
 const closePopup = ()=>{
 	infoPopup.value.close();
+}
+
+// 点击评分弹窗
+const clickScore = ()=>{
+	scorePopup.value.open();
+}
+
+// 关闭评分弹窗
+const closeScorePopup = ()=>{
+	scorePopup.value.close();
+}
+
+const submitScore = ()=>{
+	console.log("当前评分:", userScore.value);
 }
 
 
@@ -204,27 +240,27 @@ const maskChange = function(){
 				}
 			}
 		}
-		
+	}
+	.popHeader{
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.title{
+			color: $text-font-color-2;
+			font-size: 26rpx;
+		}
+		.close{
+			// border: 1px solid red;
+			padding: 6rpx 6rpx;
+		}
 	}
 	.infoPopup{
 		background: white;
 		padding: 30rpx;
 		border-radius: 30rpx 30rpx 0 0;
 		overflow: hidden;
-		.popHeader{
-			margin: auto;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			.title{
-				color: $text-font-color-2;
-				font-size: 26rpx;
-			}
-			.close{
-				// border: 1px solid red;
-				padding: 6rpx 6rpx;
-			}
-		}
+
 		scroll-view{
 			max-height: 60vh;
 			.content{
@@ -286,7 +322,31 @@ const maskChange = function(){
 		}
 		
 	}
-
+	.scorePopup{
+		background: #FFF;
+		padding: 30rpx;
+		width: 70vw;
+		border-radius: 30rpx;
+		.content{
+			padding: 30rpx 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.text{
+				color: #FEC93E;
+				padding-left: 10rpx;
+				width: 80rpx;
+				line-height: 1em;
+				text-align: right;
+			}
+		}
+		.footer{
+			padding: 10rpx 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 }
 
 
