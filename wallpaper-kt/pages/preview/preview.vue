@@ -18,7 +18,7 @@
 				<uni-dateformat :date="new Date()" format="MM月dd日"></uni-dateformat>
 			</view>
 			<view class="footer">
-				<view class="box">
+				<view class="box" @click="clickInfo">
 					<uni-icons type="info" size="28"></uni-icons>
 					<view class="text">信息</view>
 				</view>
@@ -32,6 +32,43 @@
 				</view>
 			</view>
 		</view>
+		
+		<uni-popup ref="infoPopup" type="bottom">
+			<view class="infoPopup">
+				<view class="popHeader">
+					<view></view>
+					<view class="title">壁纸信息</view>
+					<view class="close" @click="closePopup">
+						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+					</view>
+				</view>
+				<scroll-view scroll-y>
+					<view class="content">
+						<view class="row">
+							<view class="label">壁纸ID:</view>
+							<text selectable>123124dfsa</text>
+						</view>
+						
+						<view class="row">
+							<view class="label">分类:</view>
+							<text selectable>明星美女</text>
+						</view>
+						
+						<view class="row">
+							<view class="label">发布者:</view>
+							<text selectable>Jacs</text>
+						</view>
+						
+						<view class="row">
+							<view class="label">评分:</view>
+							<text selectable>Jacs</text>
+						</view>
+						
+					</view>
+				</scroll-view>
+			</view>
+		</uni-popup>
+		
 	</view>
 </template>
 
@@ -39,7 +76,19 @@
 import {ref} from "vue";
 
 const maskState = ref(true);
+const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
 
+// 点击info弹窗
+const clickInfo = ()=>{
+	infoPopup.value.open();
+}
+
+// 关闭info弹窗
+const closePopup = ()=>{
+	infoPopup.value.close();
+}
+
+// 遮罩层状态
 const maskChange = function(){
 	maskState.value = !maskState.value;
 }
@@ -131,6 +180,50 @@ const maskChange = function(){
 					font-size: 26rpx;
 					color: $text-font-color-2; //
 				}
+			}
+		}
+		
+	}
+	.infoPopup{
+		background: white;
+		padding: 30rpx;
+		border-radius: 30rpx 30rpx 0 0;
+		overflow: hidden;
+		.popHeader{
+			margin: auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.title{
+				color: $text-font-color-2;
+				font-size: 26rpx;
+			}
+			.close{
+				// border: 1px solid red;
+				padding: 6rpx 6rpx;
+			}
+		}
+		scroll-view{
+			max-height: 60vh;
+			.content{
+				.row{
+					display: flex;
+					padding: 16rpx 0;
+					font-size: 32rpx;
+					line-height: 1.7em;			// 行高1.7倍
+					.label{
+						color: $text-font-color-3;
+						width: 140rpx;
+						text-align: right;
+						font-size: 30rpx;
+					}
+					.value{
+						flex:1;
+						width: 0;
+					}
+				}
+				
+				
 			}
 		}
 		
