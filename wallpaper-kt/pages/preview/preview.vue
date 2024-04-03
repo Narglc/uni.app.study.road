@@ -5,11 +5,10 @@
 				<image  @click="maskChange" src="../../common/images/preview1.jpg" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
-		
 		<view class="mask" v-if="maskState">
-			<navigator open-type="navigateBack" class="goBack">
-				<uni-icons class="backIcon" type="back" size="25" color="#FEFEFC"></uni-icons>
-			</navigator>
+			<view class="goBack" :style="{top:getStatusBarHeight()+'px'}">
+				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
+			</view>
 			<view class="count">3 / 9</view>
 			<view class="time">
 				<uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat>
@@ -112,6 +111,7 @@
 
 <script setup>
 import {ref} from "vue";
+import {getStatusBarHeight} from "@/utils/system.js"
 
 const maskState = ref(true);
 const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
@@ -173,7 +173,7 @@ const maskChange = function(){
 			width: fit-content;			// 根据内容适配宽度
 		}
 		.goBack{
-			position: absolute;
+			// position: absolute;
 			width: 38px;
 			height: 38px;			
 			background: rgba(0, 0, 0, 0.5);
@@ -181,8 +181,6 @@ const maskChange = function(){
 			margin-left: 0;
 			border-radius: 100px;
 			top: 0;
-			
-			
 			backdrop-filter: blur(10rpx);
 			border: 1rpx solid rgba(255, 255, 255, 0.3);
 			display: flex;
