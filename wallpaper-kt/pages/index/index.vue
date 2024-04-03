@@ -16,8 +16,9 @@
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item>文字内容1</swiper-item>
-					<swiper-item>文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2</swiper-item>
+					<swiper-item v-for="item in 4" @click="goNoticeDetail">
+							文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2
+					</swiper-item>
 				</swiper>
 			</view>
 			<view class="right">
@@ -84,6 +85,11 @@ const goPreview = ()=>{
 	})
 }
 
+const goNoticeDetail = ()=>{
+	uni.navigateTo({
+		url:"/pages/notice/detail"
+	})
+}
 </script>
 
 <style lang="scss" scoped>
