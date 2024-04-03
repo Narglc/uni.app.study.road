@@ -32,6 +32,15 @@
 				"navigationBarTitleText" : "分类列表",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/preview/preview",
+			"style" : 
+			{
+				"navigationBarTitleText" : "预览",
+				"enablePullDownRefresh" : false,
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {
