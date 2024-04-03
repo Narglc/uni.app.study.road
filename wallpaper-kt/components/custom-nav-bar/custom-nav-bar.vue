@@ -1,7 +1,7 @@
 <template>
 	<view class="layout">
-		<view class="narvar">
-			<view class="statusBar"></view>
+		<view class="navbar">
+			<view class="statusBar" :style="{height:statusBarHeight+'px'}"></view>
 			<view class="titleBar">
 				<view class="title">标题</view>
 				<view class="search">
@@ -17,14 +17,19 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+	
+let SYSTEM_INFO = uni.getSystemInfoSync();
 
+let statusBarHeight = ref(SYSTEM_INFO.statusBarHeight);
+
+console.log(statusBarHeight);
 
 </script>
 
 <style lang="scss" scoped>
 .layout{
-	.narvar{
-
+	.navbar{
 		position: fixed;
 		top: 0;
 		left: 0;
