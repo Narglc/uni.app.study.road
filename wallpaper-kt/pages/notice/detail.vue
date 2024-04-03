@@ -2,7 +2,7 @@
 	<view class="noticeLayout">
 		<view class="title">
 			<view class="tag">
-					
+				<uni-tag text="置顶" inverted type="error"></uni-tag>
 			</view>
 			<view class="font">这个区域填写标题</view>
 		</view>
