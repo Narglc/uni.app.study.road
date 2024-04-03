@@ -45,25 +45,43 @@
 				<scroll-view scroll-y>
 					<view class="content">
 						<view class="row">
-							<view class="label">壁纸ID:</view>
+							<view class="label">壁纸ID：</view>
 							<text selectable>123124dfsa</text>
 						</view>
 						
 						<view class="row">
-							<view class="label">分类:</view>
-							<text selectable>明星美女</text>
+							<view class="label">分类：</view>
+							<text class="value class">明星美女</text>
 						</view>
 						
 						<view class="row">
-							<view class="label">发布者:</view>
-							<text selectable>Jacs</text>
+							<view class="label">发布者：</view>
+							<text class="value">Jacs</text>
 						</view>
 						
 						<view class="row">
-							<view class="label">评分:</view>
-							<text selectable>Jacs</text>
+							<view class="label">评分：</view>
+							<view class="value roteBox">
+								<uni-rate readonly touchable value="3.5" />
+								<text class="score">5分</text>
+							</view>
 						</view>
 						
+						<view class="row">
+							<view class="label">摘要：</view>
+							<view class="value">摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分.</view>
+						</view>
+						
+						<view class="row">
+							<view class="label">标签：</view>
+							<view class="value tabs">
+								<view class="tab" v-for="(item,index) in 3">标签名{{item}}</view>
+							</view>
+						</view>
+						
+						<view class="copyright">
+							声明：本图片军民来自用户投稿，仅用于学习交流。
+						</view>
 					</view>
 				</scroll-view>
 			</view>
@@ -87,6 +105,7 @@ const clickInfo = ()=>{
 const closePopup = ()=>{
 	infoPopup.value.close();
 }
+
 
 // 遮罩层状态
 const maskChange = function(){
@@ -115,25 +134,28 @@ const maskChange = function(){
 			right: 0;
 			margin: auto;
 			color: #fff;
-			width: fit-content;
+			width: fit-content;			// 根据内容适配宽度
 		}
 		.goBack{
 			position: absolute;
+			width: 38px;
+			height: 38px;			
+			background: rgba(0, 0, 0, 0.5);
 			left: 30rpx;
-			top: 80rpx;
+			margin-left: 0;
+			border-radius: 100px;
+			top: 0;
 			
-			height: 70rpx;
-			border: 1px solid #4E4E44;
-			border-radius: 50%;
-			.backIcon{
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
+			
+			backdrop-filter: blur(10rpx);
+			border: 1rpx solid rgba(255, 255, 255, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
 		}
 		.count{
-			top: 10vh;
-			width: fit-content;				// 根据内容适配宽度
+			top: 10vh;			
 			background: rgba(0,0,0,0.3);
 			font-size: 28rpx;
 			border-radius: 40rpx;
@@ -158,7 +180,7 @@ const maskChange = function(){
 			
 			width: 65vw;
 			height: 120rpx;
-			border-radius: 60rpx;
+			border-radius: 120rpx;
 			
 			color: #000;
 			
@@ -178,7 +200,7 @@ const maskChange = function(){
 				// border: 1px solid red;
 				.text{
 					font-size: 26rpx;
-					color: $text-font-color-2; //
+					color: $text-font-color-2; 
 				}
 			}
 		}
@@ -221,6 +243,42 @@ const maskChange = function(){
 						flex:1;
 						width: 0;
 					}
+					.roteBox{
+						display: flex;
+						align-items: center;
+						.score{
+							font-size: 26rpx;
+							color: $text-font-color-2;
+							padding-left: 10rpx;
+						}
+					}
+					.tabs{
+						display: flex;
+						flex-wrap: wrap;	// 容不下时自动换行
+						.tab{
+							padding: 0 10rpx;
+							border: 1px solid $brand-theme-color;
+							color: $brand-theme-color;
+							font-size: 22rpx;
+							padding: 10rpx 30rpx;
+							border-radius: 40rpx;
+							line-height: 1em;
+							margin: 0 10rpx 10rpx 0;
+						}
+						
+					}
+					.class{
+						color: $brand-theme-color;
+					}
+				}
+				.copyright{
+					font-size: 28rpx;
+					padding: 20rpx;
+					background: #F6F6F6;
+					color:#666;
+					border-radius: 10rpx;
+					margin: 20rpx 0;
+					line-height: 1.6em;
 				}
 				
 				
