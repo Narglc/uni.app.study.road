@@ -16,8 +16,8 @@
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item v-for="item in 4" @click="goNoticeDetail">
-							文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2文字内容2
+					<swiper-item v-for="item in noticeList" :key="item._id" @click="goNoticeDetail">
+							{{item.title}}
 					</swiper-item>
 				</swiper>
 			</view>
@@ -40,8 +40,8 @@
 			</common-title>
 			<view class="content">
 				<scroll-view scroll-x>
-					<view class="box" v-for="(item,index) in 10" :key="index" @click="goPreview">
-						<image src="../../common/images/preview1.jpg" mode="aspectFill"></image>
+					<view class="box" v-for="item in dayRandomList" :key="item._id" @click="goPreview">
+						<image :src="item.smallPicurl" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -72,7 +72,9 @@
 <script setup>
 import {ref} from "vue";
 
-const bannerList = ref([])
+const bannerList = ref([]);
+const dayRandomList = ref([]);
+const noticeList = ref([]);
 
 const getBanner = async ()=>{
 	let res = await uni.request({
@@ -88,7 +90,42 @@ const getBanner = async ()=>{
 	}
 }
 
+const getDayRandom = async ()=>{
+	let res = await uni.request({
+		url:"https://tea.qingnian8.com/api/bizhi/randomWall",
+		header:{
+			"access-key":"jacqueswanna"
+		}
+	})
+	
+	if(res.data.errCode == 0){
+		console.log(res);
+		dayRandomList.value = res.data.data;
+	}
+}
+
+const getNotice = async ()=>{
+	let res = await uni.request({
+		url:"https://tea.qingnian8.com/api/bizhi/wallNewsList",
+		header:{
+			"access-key":"jacqueswanna"
+		},
+		data:{
+			select: true,
+			// pageSize:3,
+		}
+	})
+	
+	if(res.data.errCode == 0){
+		console.log(res);
+		noticeList.value = res.data.data;
+	}
+}
+
+
 getBanner();
+getDayRandom();
+getNotice();
 
 const goPreview = ()=>{
 	uni.navigateTo({
