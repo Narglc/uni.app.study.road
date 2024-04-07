@@ -71,55 +71,25 @@
 
 <script setup>
 import {ref} from "vue";
+import {apiGetBanner,apiGetRandom,apiGetNotice} from "@/api/apis.js"
 
 const bannerList = ref([]);
 const dayRandomList = ref([]);
 const noticeList = ref([]);
 
 const getBanner = async ()=>{
-	let res = await uni.request({
-		url:"https://tea.qingnian8.com/api/bizhi/homeBanner",
-		header:{
-			"access-key":"jacqueswanna"
-		}
-	})
-	
-	if(res.data.errCode == 0){
-		console.log(res);
-		bannerList.value = res.data.data;
-	}
+	let res = await apiGetBanner();			// 返回的是Promise对象
+	bannerList.value = res.data;
 }
 
 const getDayRandom = async ()=>{
-	let res = await uni.request({
-		url:"https://tea.qingnian8.com/api/bizhi/randomWall",
-		header:{
-			"access-key":"jacqueswanna"
-		}
-	})
-	
-	if(res.data.errCode == 0){
-		console.log(res);
-		dayRandomList.value = res.data.data;
-	}
+	let res = await apiGetRandom();
+	dayRandomList.value = res.data;
 }
 
 const getNotice = async ()=>{
-	let res = await uni.request({
-		url:"https://tea.qingnian8.com/api/bizhi/wallNewsList",
-		header:{
-			"access-key":"jacqueswanna"
-		},
-		data:{
-			select: true,
-			// pageSize:3,
-		}
-	})
-	
-	if(res.data.errCode == 0){
-		console.log(res);
-		noticeList.value = res.data.data;
-	}
+	let res = await apiGetNotice({select:true})
+	noticeList.value = res.data;
 }
 
 
