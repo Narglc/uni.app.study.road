@@ -58,7 +58,10 @@ const getClassList = async ()=>{
 	console.log(res);
 	classList.value = [...classList.value , ...res.data];
 	if(queryParams.pageSize > res.data.length) noData.value = true; 
-	console.log(classList.value);	
+	
+	// 同步存储到本地缓存中, 或者使用pinia管理
+	uni.setStorageSync("storageClassList", classList.value)
+	// console.log(classList.value);	
 }
 
 // getClassList();

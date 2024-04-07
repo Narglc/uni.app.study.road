@@ -1,15 +1,15 @@
 <template>
 	<view class="preview">
 		<swiper circular>
-			<swiper-item v-for="item of 5">
-				<image  @click="maskChange" src="../../common/images/preview1.jpg" mode="aspectFill"></image>
+			<swiper-item v-for="item of classList" :key="item._id">
+				<image  @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 		<view class="mask" v-if="maskState">
 			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
 				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
 			</view>
-			<view class="count">3 / 9</view>
+			<view class="count">3 / {{classList.length}}</view>
 			<view class="time">
 				<uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat>
 			</view>
@@ -117,6 +117,18 @@ const maskState = ref(true);
 const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
 const scorePopup = ref(null);
 const userScore = ref(0);
+
+const classList = ref([]);
+
+
+const storageClassList = uni.getStorageSync("storageClassList") || [];
+classList.value = storageClassList.map(item=>{
+	return {
+		...item,
+		picurl:item.smallPicurl.replace("_small.webp",".jpg")
+	};
+})
+console.log(classList.value);
 
 // 点击info弹窗
 const clickInfo = ()=>{
