@@ -20,8 +20,9 @@ export function apiGetNotice(data={}){
 	})
 }
 
-export function apiGetClassify(){
+export function apiGetClassify(data={}){
 	return request({
-		url:"/classify"
+		url:"/classify",
+		data:data
 	})
 }

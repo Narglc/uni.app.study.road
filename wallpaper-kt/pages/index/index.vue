@@ -56,10 +56,7 @@
 			</common-title>
 			
 			<view class="content">
-				<theme-item v-for="item of classifyList" :key="item._id">
-<!-- 					<template #imgPreview>
-						<image src="../../common/images/preview2.jpg" mode=""></image>
-					</template> -->
+				<theme-item v-for="item of classifyList" :key="item._id" :item="item">
 				</theme-item>
 				<theme-item :isMore="true"></theme-item>
 			</view>
@@ -94,9 +91,11 @@ const getNotice = async ()=>{
 }
 
 const getClassify = async ()=>{
-	let res = await apiGetClassify()
+	let res = await apiGetClassify({
+		select:true
+	})
+	// console.log(res);
 	classifyList.value = res.data;
-	console.log(classifyList.value);
 }
 
 getBanner();

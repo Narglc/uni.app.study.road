@@ -2,13 +2,25 @@
 	<view class="classLayout pageBg">
 		<custom-nav-bar title="分类"></custom-nav-bar>
 		<view class="classify">
-			<theme-item v-for="item of 15"></theme-item>
+			<theme-item v-for="item of classifyList" :item="item" :key="item._id"></theme-item>
 		</view>
 	</view>
 </template>
 
 <script setup>
+import {ref} from "vue";
+import {apiGetClassify} from "@/api/apis.js"
+const classifyList = ref([])
 
+const getClassify = async ()=>{
+	let res = await apiGetClassify({
+		pageSize:15
+	})
+	console.log(res);
+	classifyList.value = res.data;
+}
+
+getClassify();
 </script>
 
 <style lang="scss" scoped>
