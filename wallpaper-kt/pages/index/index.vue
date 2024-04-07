@@ -72,11 +72,21 @@
 <script setup>
 import {ref} from "vue";
 
-const banners = [
-	"../../common/images/banner1.jpg",
-	"../../common/images/banner2.jpg",
-	"../../common/images/banner3.jpg"
-]
+const banners = ref([])
+
+const getBanner = ()=>{
+	uni.request({
+		url:"https://tea.qingnian8.com/api/bizhi/homeBanner"
+	}).then(res=>{
+		console.log(res.data.data);
+		res.data.data.forEach(one=>{
+			banners.value.push(one.picurl);
+		})
+		console.log(banners.value);
+	})
+}
+
+getBanner();
 
 
 const goPreview = ()=>{
