@@ -56,7 +56,7 @@
 			</common-title>
 			
 			<view class="content">
-				<theme-item v-for="(item,index) of 8">
+				<theme-item v-for="item of classifyList" :key="item._id">
 <!-- 					<template #imgPreview>
 						<image src="../../common/images/preview2.jpg" mode=""></image>
 					</template> -->
@@ -71,11 +71,12 @@
 
 <script setup>
 import {ref} from "vue";
-import {apiGetBanner,apiGetRandom,apiGetNotice} from "@/api/apis.js"
+import {apiGetBanner,apiGetRandom,apiGetNotice,apiGetClassify} from "@/api/apis.js"
 
 const bannerList = ref([]);
 const dayRandomList = ref([]);
 const noticeList = ref([]);
+const classifyList = ref([])
 
 const getBanner = async ()=>{
 	let res = await apiGetBanner();			// 返回的是Promise对象
@@ -92,10 +93,16 @@ const getNotice = async ()=>{
 	noticeList.value = res.data;
 }
 
+const getClassify = async ()=>{
+	let res = await apiGetClassify()
+	classifyList.value = res.data;
+	console.log(classifyList.value);
+}
 
 getBanner();
 getDayRandom();
 getNotice();
+getClassify();
 
 const goPreview = ()=>{
 	uni.navigateTo({

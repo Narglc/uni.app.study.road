@@ -19,3 +19,9 @@ export function apiGetNotice(data={}){
 		data:data
 	})
 }
+
+export function apiGetClassify(){
+	return request({
+		url:"/classify"
+	})
+}
