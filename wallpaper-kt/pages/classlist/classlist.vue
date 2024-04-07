@@ -11,6 +11,7 @@
 		<view class="loadingLayout" v-if="noData || classList.length">
 			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
 		</view>
+		<view class="safe-area-inset-bottom"></view>
 	</view>
 </template>
 
