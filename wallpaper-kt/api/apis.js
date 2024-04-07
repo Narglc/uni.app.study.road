@@ -27,7 +27,7 @@ export function apiGetClassify(data={}){
 	})
 }
 
-export function apiGetClassiList(data={}){
+export function apiGetClassList(data={}){
 	return request({
 		url:"/wallList",
 		data

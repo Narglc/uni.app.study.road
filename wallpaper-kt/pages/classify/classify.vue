@@ -14,7 +14,7 @@ const classifyList = ref([])
 
 const getClassify = async ()=>{
 	let res = await apiGetClassify({
-		pageSize:15
+		pageSize:100
 	})
 	console.log(res);
 	classifyList.value = res.data;

@@ -10,13 +10,19 @@
 
 <script setup>
 import {ref} from "vue";
-import {onLoad} from "@dcloudio/uni-app" 
+import {onLoad,onReachBottom} from "@dcloudio/uni-app" 
 
-import {apiGetClassiList} from "@/api/apis.js"
+import {apiGetClassList} from "@/api/apis.js"
 
+//分类列表数据
 const classList = ref([])
+const noData = ref(false)
 
-const queryParams = {}
+//定义data参数
+const queryParams = {
+	pageNum:1,
+	pageSize:12
+}
 
 onLoad((e)=>{
 	console.log(e);
@@ -34,10 +40,18 @@ onLoad((e)=>{
 	getClassList();
 })
 
+onReachBottom(()=>{
+	if(noData.value) return;
+	queryParams.pageNum++;
+	getClassList();
+})
+//获取分类列表网络数据
 const getClassList = async ()=>{
-	let res = await apiGetClassiList(queryParams)
+	let res = await apiGetClassList(queryParams)
 	console.log(res);
-	classList.value = res.data;
+	classList.value = [...classList.value , ...res.data];
+	if(queryParams.pageSize > res.data.length) noData.value = true; 
+	console.log(classList.value);	
 }
 
 // getClassList();

@@ -9,7 +9,6 @@
 		<!-- <slot name="imgPreview"></slot> -->
 		<navigator url="/pages/classify/classify" open-type="reLaunch" class="box more" v-if="isMore">
 			<image class="pic" src="../../common/images/more.jpg" mode="aspectFill"></image>
-			
 			<view class="mask">
 				<uni-icons type="more-filled" size="34" color="#fff"></uni-icons>
 				<text>更多</text>
