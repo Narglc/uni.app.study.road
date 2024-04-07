@@ -4,8 +4,8 @@
 		<view class="banner">
 			<swiper circular indicator-dots indicator-color="rgba(255,255,255,0.5)" 
 			indicator-active-color="#FFF" autoplay>
-				<swiper-item v-for="(item,index) in banners" :key=index>
-						<image :src="item" mode="aspectFill"></image>
+				<swiper-item v-for="item in bannerList" :key=item._id>
+						<image :src="item.picurl" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -72,22 +72,23 @@
 <script setup>
 import {ref} from "vue";
 
-const banners = ref([])
+const bannerList = ref([])
 
-const getBanner = ()=>{
-	uni.request({
-		url:"https://tea.qingnian8.com/api/bizhi/homeBanner"
-	}).then(res=>{
-		console.log(res.data.data);
-		res.data.data.forEach(one=>{
-			banners.value.push(one.picurl);
-		})
-		console.log(banners.value);
+const getBanner = async ()=>{
+	let res = await uni.request({
+		url:"https://tea.qingnian8.com/api/bizhi/homeBanner",
+		header:{
+			"access-key":"jacqueswanna"
+		}
 	})
+	
+	if(res.data.errCode == 0){
+		console.log(res);
+		bannerList.value = res.data.data;
+	}
 }
 
 getBanner();
-
 
 const goPreview = ()=>{
 	uni.navigateTo({
