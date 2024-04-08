@@ -137,9 +137,9 @@ console.log(classList.value);
 
 function readImgsFunc(){
 	readImgs.value.push(
-		currentIndex.value-1<0 ? classList.value.length-1 : currentIndex.value-1,
+		(currentIndex.value-1 + classList.value.length)%classList.value.length,
 		currentIndex.value,
-		currentIndex.value+1>=classList.value.length ? 0 : currentIndex.value+1
+		(currentIndex.value+1 + classList.value.length)%classList.value.length
 		);
 	
 	// new Set 去重
