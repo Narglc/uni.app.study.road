@@ -24,7 +24,7 @@
 				</view>
 				<view class="box" @click="clickScore">
 					<uni-icons type="star" size="28"></uni-icons>
-					<view class="text">5分</view>
+					<view class="text">{{currentInfo.score}}分</view>
 				</view>
 				<view class="box">
 					<uni-icons type="download" size="23"></uni-icons>
@@ -91,18 +91,19 @@
 			<view class="scorePopup">
 				<view class="popHeader">
 					<view></view>
-					<view class="title">壁纸评分</view>
+					<view class="title">{{ isScore ?"已经评过分了":"壁纸评分" }}</view>
 					<view class="close" @click="closeScorePopup">
 						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
 					</view>
 				</view>
 				<view class="content">
-					<uni-rate v-model="userScore" allowHalf></uni-rate>
+					<uni-rate v-model="userScore" allowHalf 
+					:disabled="isScore"></uni-rate>
 					<text class="text">{{userScore}}</text>
 				</view>
 				
 				<view class="footer">
-					<button @click="submitScore" :disabled="userScore == 0" type="default" size="mini" plain>确认评分</button>
+					<button @click="submitScore" :disabled="userScore == 0 || isScore" type="default" size="mini" plain>确认评分</button>
 				</view>
 			</view>
 		</uni-popup>
@@ -115,6 +116,8 @@ import {ref} from "vue";
 import {getStatusBarHeight} from "@/utils/system.js";
 import {onLoad} from "@dcloudio/uni-app";
 
+import {apiGetSetupScore} from "@/api/apis.js"
+
 const maskState = ref(true);
 const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
 const scorePopup = ref(null);
@@ -125,6 +128,7 @@ const currentId = ref(null);
 const currentIndex = ref(0);
 const currentInfo = ref(null);
 const readImgs = ref([]);
+const isScore = ref(false);
 
 const storageClassList = uni.getStorageSync("storageClassList") || [];
 classList.value = storageClassList.map(item=>{
@@ -173,16 +177,47 @@ const closePopup = ()=>{
 
 // 点击评分弹窗
 const clickScore = ()=>{
+	if(currentInfo.value.userScore){
+		isScore.value = true;
+		userScore.value = currentInfo.value.userScore;
+	}
 	scorePopup.value.open();
 }
 
 // 关闭评分弹窗
 const closeScorePopup = ()=>{
 	scorePopup.value.close();
+	userScore.value = 0;
+	isScore.value = false;
 }
 
-const submitScore = ()=>{
+// 提交评分
+const submitScore = async ()=>{
+	uni.showLoading({
+		title:"提交中..."
+	})
 	console.log("当前评分:", userScore.value);
+	console.log(currentInfo.value);
+	let {
+		classid, 
+		_id:wallId				// 为原始元素_id增加别名wallId
+		} = currentInfo.value;
+	let rsp = await apiGetSetupScore({
+		classid,
+		wallId,
+		userScore:userScore.value
+	})
+	uni.hideLoading()
+	if(rsp.errCode == 0){
+		uni.showToast({
+			title:"打分成功",
+			icon:"none"
+		})
+		classList.value[currentIndex.value].userScore = userScore.value
+		uni.setStorageSync("storageClassList", classList.value)
+		
+		closeScorePopup();
+	}
 }
 
 
