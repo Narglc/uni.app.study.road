@@ -5,7 +5,6 @@
 				<image v-if="readImgs.includes(index)"  @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
-		{{currentInfo}}
 		<view class="mask" v-if="maskState">
 			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
 				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
@@ -26,7 +25,7 @@
 					<uni-icons type="star" size="28"></uni-icons>
 					<view class="text">{{currentInfo.score}}分</view>
 				</view>
-				<view class="box">
+				<view class="box" @click="clickDownload">
 					<uni-icons type="download" size="23"></uni-icons>
 					<view class="text">下载</view>
 				</view>
@@ -229,6 +228,32 @@ const maskChange = function(){
 // 返回上一页
 const goBack = ()=>{
 	uni.navigateBack();
+}
+
+
+// 点击下载
+const clickDownload = ()=>{
+// #ifdef H5
+	uni.showModal({
+		content:"请长按保存壁纸",
+		showCancel:false
+	})
+// #endif
+
+// #ifndef H5
+	uni.getImageInfo({
+		src:currentInfo.value.picurl,	
+		success:(picinfo)=>{
+			console.log(picinfo);
+			uni.saveImageToPhotosAlbum({
+				filePath:picinfo.path,
+				success:(res)=>{
+					console.log(res);
+				},
+			})
+		}
+	})
+// #endif
 }
 
 </script>
