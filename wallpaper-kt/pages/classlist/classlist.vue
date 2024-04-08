@@ -4,7 +4,7 @@
 			<uni-load-more status="loading"></uni-load-more>
 		</view>
 		<view class="content">
-			<navigator url="/pages/preview/preview" class="item" v-for="item of classList" :key="item._id">
+			<navigator :url='"/pages/preview/preview?id=" + item._id' class="item" v-for="item of classList" :key="item._id">
 				<image :src="item.smallPicurl" mode="aspectFill"></image>
 			</navigator>
 		</view>
