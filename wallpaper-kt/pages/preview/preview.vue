@@ -113,7 +113,7 @@
 <script setup>
 import {ref} from "vue";
 import {getStatusBarHeight} from "@/utils/system.js";
-import {onLoad, onShow} from "@dcloudio/uni-app";
+import {onLoad} from "@dcloudio/uni-app";
 
 const maskState = ref(true);
 const infoPopup = ref(null);		// 必须与上方的infoPopup保持一致
@@ -135,23 +135,29 @@ classList.value = storageClassList.map(item=>{
 })
 console.log(classList.value);
 
+function readImgsFunc(){
+	readImgs.value.push(
+		currentIndex.value-1<0 ? classList.value.length-1 : currentIndex.value-1,
+		currentIndex.value,
+		currentIndex.value+1>=classList.value.length ? 0 : currentIndex.value+1
+		);
+	
+	// new Set 去重
+	readImgs.value = [...new Set(readImgs.value)];
+}
 
 onLoad((e)=>{
 	currentId.value = e.id;	
 	currentIndex.value = classList.value.findIndex(item=>item._id == currentId.value);
-	console.log("index", currentIndex.value);
-	readImgs.value.push(currentIndex.value);
+	console.log("index", currentIndex.value, "length:", classList.value.length);
+	readImgsFunc();
+
 })
 
 const swiperChange = (e)=>{
 	currentIndex.value = e.detail.current;
-	if(readImgs.value.includes(currentIndex.value))	return;
-	readImgs.value.push(currentIndex.value);
+	readImgsFunc();
 }
-
-onShow(()=>{
-	console.log("currentIndex",currentIndex.value);
-})
 
 // 点击info弹窗
 const clickInfo = ()=>{
