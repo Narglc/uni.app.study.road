@@ -1,10 +1,11 @@
 <template>
 	<view class="preview">
 		<swiper circular :current="currentIndex" @change="swiperChange">
-			<swiper-item v-for="item of classList" :key="item._id">
-				<image  @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
+			<swiper-item v-for="(item,index) of classList" :key="item._id">
+				<image v-if="readImgs.includes(index)"  @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
+		{{readImgs}}
 		<view class="mask" v-if="maskState">
 			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
 				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
@@ -123,6 +124,8 @@ const classList = ref([]);
 const currentId = ref(null);
 const currentIndex = ref(0);
 
+const readImgs = ref([]);
+
 const storageClassList = uni.getStorageSync("storageClassList") || [];
 classList.value = storageClassList.map(item=>{
 	return {
@@ -137,12 +140,13 @@ onLoad((e)=>{
 	currentId.value = e.id;	
 	currentIndex.value = classList.value.findIndex(item=>item._id == currentId.value);
 	console.log("index", currentIndex.value);
-	
+	readImgs.value.push(currentIndex.value);
 })
 
 const swiperChange = (e)=>{
 	currentIndex.value = e.detail.current;
-	console.log(e);
+	if(readImgs.value.includes(currentIndex.value))	return;
+	readImgs.value.push(currentIndex.value);
 }
 
 onShow(()=>{
