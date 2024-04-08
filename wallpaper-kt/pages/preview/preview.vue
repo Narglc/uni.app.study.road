@@ -5,7 +5,7 @@
 				<image v-if="readImgs.includes(index)"  @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
-		{{readImgs}}
+		{{currentInfo}}
 		<view class="mask" v-if="maskState">
 			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
 				<uni-icons  type="back" size="20" color="#FFF"></uni-icons>
@@ -46,36 +46,36 @@
 					<view class="content">
 						<view class="row">
 							<view class="label">壁纸ID：</view>
-							<text selectable>123124dfsa</text>
+							<text selectable>{{currentInfo._id}}</text>
 						</view>
 						
 						<view class="row">
 							<view class="label">分类：</view>
-							<text class="value class">明星美女</text>
+							<text class="value class">明星美女{{currentInfo.classid}}</text>
 						</view>
 						
 						<view class="row">
 							<view class="label">发布者：</view>
-							<text class="value">Jacs</text>
+							<text class="value">{{currentInfo.nickname}}</text>
 						</view>
 						
 						<view class="row">
 							<view class="label">评分：</view>
 							<view class="value roteBox">
-								<uni-rate readonly touchable value="3.5" />
-								<text class="score">5分</text>
+								<uni-rate readonly touchable :value="currentInfo.score" />
+								<text class="score">{{currentInfo.score}}分</text>
 							</view>
 						</view>
 						
 						<view class="row">
 							<view class="label">摘要：</view>
-							<view class="value">摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分,摘要文字内容填充部分.</view>
+							<view class="value">{{currentInfo.description}}</view>
 						</view>
 						
 						<view class="row">
 							<view class="label">标签：</view>
 							<view class="value tabs">
-								<view class="tab" v-for="(item,index) in 3">标签名{{item}}</view>
+								<view class="tab" v-for="(item,index) in currentInfo.tabs">{{item}}</view>
 							</view>
 						</view>
 						
@@ -123,7 +123,7 @@ const classList = ref([]);
 
 const currentId = ref(null);
 const currentIndex = ref(0);
-
+const currentInfo = ref(null);
 const readImgs = ref([]);
 
 const storageClassList = uni.getStorageSync("storageClassList") || [];
@@ -150,12 +150,14 @@ onLoad((e)=>{
 	currentId.value = e.id;	
 	currentIndex.value = classList.value.findIndex(item=>item._id == currentId.value);
 	console.log("index", currentIndex.value, "length:", classList.value.length);
+	currentInfo.value = classList.value[currentIndex.value];
 	readImgsFunc();
 
 })
 
 const swiperChange = (e)=>{
 	currentIndex.value = e.detail.current;
+	currentInfo.value = classList.value[currentIndex.value];
 	readImgsFunc();
 }
 
