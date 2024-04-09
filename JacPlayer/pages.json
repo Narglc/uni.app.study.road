@@ -21,6 +21,14 @@
 				"navigationBarTitleText" : "dplayer",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/live-player/live-player",
+			"style" : 
+			{
+				"navigationBarTitleText" : "live?",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
