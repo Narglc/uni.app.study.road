@@ -1,0 +1,13 @@
+{
+  "hash": "20599ef7",
+  "browserHash": "bad569c0",
+  "optimized": {
+    "hls.js": {
+      "src": "../../node_modules/hls.js/dist/hls.mjs",
+      "file": "hls__js.js",
+      "fileHash": "416608e5",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}
