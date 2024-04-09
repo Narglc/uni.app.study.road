@@ -41,8 +41,11 @@ export default {
 		  },
 		  activityDetail:{
 			indexpic:"https://pic1.imgyzzy.com/upload/vod/2022-03-20/202203201647766949.jpg",
-			title:"直播吗?"
-		  }
+			title:"直播吗?",
+			style:{
+				mode:1,
+			}
+		  },
 		  videoPlayer: null,
 		  //是否正在播放
 		  isPlaying: true,
@@ -53,7 +56,7 @@ export default {
 	    this.initVideo()
 	},
 	methods:{
-		initVideo() {
+		async initVideo() {
 		      let video = document.createElement('video')
 		      video.id = 'video'
 		      //如果需要全屏幕展现播放器需要增加 object-fit: cover;
@@ -107,7 +110,7 @@ export default {
 		          fluid: true, // 自适应宽高
 		          muted: false, //  是否静音
 		          aspectRatio: aspectRatio, // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-		          controls: false, //是否拥有控制条 【默认true】,如果设为false ,那么只能通过api进行控制了。也就是说界面上不会出现任何控制按钮
+		          controls: true, //是否拥有控制条 【默认true】,如果设为false ,那么只能通过api进行控制了。也就是说界面上不会出现任何控制按钮
 		          autoplay: true, //如果true,浏览器准备好时开始回放。 autoplay: "muted", // //自动播放属性,muted:静音播放
 		          loop: true, // 导致视频一结束就重新开始。 视频播放结束后，是否循环播放
 		          techOrder: ['html5', 'flash'], //播放顺序
@@ -123,10 +126,16 @@ export default {
 		            remainingTimeDisplay: true, //当前以播放时间
 		            fullscreenToggle: true, //全屏按钮
 		            pictureInPictureToggle: true //画中画
-		          }
+		          },
+				  sources:[
+						{
+							src: 'https://yzzy1.play-cdn20.com/20240406/31804_4104f58f/index.m3u8',
+							type: "application/x-mpegURL"  
+						}
+					]
 		        },
 		        function () {
-				  console.log("vedio is ready...");
+				  console.log("live vedio is ready...");
 		          this.on('error', function () {
 		            //请求数据时遇到错误
 		            console.log('请求数据时遇到错误')
