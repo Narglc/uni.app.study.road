@@ -24,6 +24,8 @@
 
 <script>
 /**
+ * 参考：https://www.jianshu.com/p/adc1f9f2ba1d
+ * 参考2: https://juejin.cn/post/7054090443180474398
  * npm 优先安装插件：
  * npm i video.js --save
  * npm i videojs-flash --save
@@ -63,7 +65,7 @@ export default {
 		      video.style = 'width: 100%; height: 100%;'
 		      video.controls = false
 		      video.setAttribute('playsinline', true) //IOS微信浏览器支持小窗内播放
-		      video.setAttribute('webkit-playsinline', true) //这个bai属性是ios 10中设置可以让视频在小du窗内播放，也就是不是全屏播放的video标签的一个属性
+		      video.setAttribute('webkit-playsinline', true) //这个属性是ios 10中设置可以让视频在小du窗内播放，也就是不是全屏播放的video标签的一个属性
 		      video.setAttribute('x5-video-player-type', 'h5') //安卓 声明启用同层H5播放器 可以在video上面加东西
 		      let source = document.createElement('source')
 		      source.src = 'https://yzzy.play-cdn21.com/20240407/22159_0d1cdb22/index.m3u8'  //设定的流地址
@@ -101,8 +103,8 @@ export default {
 		          poster: this.activityDetail.indexpic, //getImageUrl(this.activityDetail.indexpic),
 		          //视频标题(activityDetail变量是我业务中用到的，请自行根据实际情况做调整)
 		          title: this.activityDetail.title,
-		          width: '100%',
-		          height: '100%',
+		          // width: '100%',
+		          // height: '100%',
 		          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
 		          autoDisable: true,
 		          preload: 'none', //auto - 当页面加载后载入整个视频 meta - 当页面加载后只载入元数据 none - 当页面加载后不载入视频
@@ -113,7 +115,7 @@ export default {
 		          controls: true, //是否拥有控制条 【默认true】,如果设为false ,那么只能通过api进行控制了。也就是说界面上不会出现任何控制按钮
 		          autoplay: true, //如果true,浏览器准备好时开始回放。 autoplay: "muted", // //自动播放属性,muted:静音播放
 		          loop: true, // 导致视频一结束就重新开始。 视频播放结束后，是否循环播放
-		          techOrder: ['html5', 'flash'], //播放顺序
+		          // techOrder: ['html5', 'flash'], //播放顺序  narglc:应该是主要针对flv文件
 		          screenshot: true,
 		          controlBar: {
 		            volumePanel: {
@@ -154,7 +156,27 @@ export default {
 		            console.log('暂停')
 		            that.isPlaying = false
 		          })
-		          this.on('timeupdate', function () {})
+				  this.on("loadstart", function() {
+					console.log("开始请求数据");
+				  })
+					this.on("progress", function() {
+						console.log("正在请求数据");
+					})
+					this.on("loadedmetadata", function() {
+						console.log("获取资源长度完成")
+					})
+					this.on("canplaythrough", function() {
+						console.log("视频源数据加载完成")
+					})
+					this.on("waiting", function() {
+						console.log("等待数据")
+					});
+					this.on('fullscreenchange', (e) => {
+						console.log("最大化")
+					});
+					this.on('timeupdate', function() { //播放时间改变
+						console.log("播放时间改变")
+					});
 		        }
 		      )
 		},

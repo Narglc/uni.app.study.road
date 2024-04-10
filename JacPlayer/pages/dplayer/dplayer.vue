@@ -20,6 +20,7 @@
             this.dp = new Dplayer({
                 //播放器的一些参数
                 container: document.getElementById('dplayer'),
+				// live: false,     // 是否直播
                 autoplay: false, //是否自动播放
                 theme: '#FADFA3', //主题色
                 loop: true,//视频是否循环播放
