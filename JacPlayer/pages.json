@@ -27,7 +27,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "深度解构学习"
 			}
 		}
 	],
