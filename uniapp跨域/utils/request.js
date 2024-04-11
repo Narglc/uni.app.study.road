@@ -1,4 +1,4 @@
-
+import { packApiUrl } from "./common";
 
 export function request(config={}){
 	// 解构请求参数
@@ -8,6 +8,9 @@ export function request(config={}){
 		header={},
 		method="GET"						// 未填写时，默认为"GET"
 	 } = config
+
+	// 对 url 进行特异化处理
+	url = packApiUrl(url);
 
 	return new Promise((resolve,reject)=>{
 		uni.request({
