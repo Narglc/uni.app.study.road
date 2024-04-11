@@ -1,6 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/shortVideo/shortVideo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "短视频大赏",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path" : "pages/live-player/live-player",
 			"style" : 
 			{
@@ -39,6 +47,10 @@
 	},
 	"tabBar": {
 		"list": [
+			{
+				"text": "新世界",
+				"pagePath": "pages/shortVideo/shortVideo"
+			},
 			{
 				"text": "live",
 				"pagePath": "pages/live-player/live-player"
