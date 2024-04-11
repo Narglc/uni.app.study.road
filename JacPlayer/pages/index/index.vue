@@ -2,9 +2,16 @@
 	<view class="content">
 		混合结构学习
 	</view>
+	<view class="info">
+		<view>列表:</view>
+		<view class="item" v-for="(item,index) in videoList">
+			{{ item.vod_id }} -- {{ item.vod_name}}
+		</view>
+	</view>
 </template>
 
-<script>
+<script setup>
+import {ref} from "vue";
 /**
  * 深度解构: 
  * 参考博文:https://blog.csdn.net/qq_18798149/article/details/135232483 [ES实用的深度解构赋值方法]
@@ -92,6 +99,20 @@ console.log("数组与对象混用",m2);
 // 解构+别名
 let {works:{music:[,a2], movies:newMov}} = person;
 console.log("解构+别名:", a2, newMov);
+
+//----
+const videoList = ref([]);
+const getVideoList = async ()=>{
+	let {data:{list}} = await uni.request({
+		url:"https://api.1080zyku.com/inc/api_mac10.php"
+	})
+	videoList.value = list;
+	console.log(list);	
+}
+
+getVideoList();
+// console.log(videoList.value);
+
 
 </script>
 
