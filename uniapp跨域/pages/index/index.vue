@@ -9,18 +9,25 @@
 
 <script setup>
 import {ref} from "vue";
+import {apiGetNbaData} from "@/api/apis.js"
+
 const listData = ref([])
 
 const getData = () =>{
-	uni.request({
-		url:"/h5api/api/match/playerranking/match/NBA/tabId/60"
-	}).then(res=>{
-		console.log(res);
-		listData.value = res.data.data.data;
+	apiGetNbaData().then(res=>{
+		console.log("-->here..", res);
+		listData.value = res.data;
 	})
+	// uni.request({
+	// 	url:"/h5api/api/match/playerranking/match/NBA/tabId/60"
+	// }).then(res=>{
+	// 	console.log(res);
+	// 	listData.value = res.data.data.data;
+	// })
 }
 
 getData();
+console.log(listData.value);
 </script>
 
 <style lang="scss" scoped>
