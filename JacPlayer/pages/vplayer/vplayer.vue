@@ -13,7 +13,8 @@ import { ref, onMounted } from 'vue';
 import Hls from 'hls.js';
 
 const videoRef = ref(null);
-const videoSrc = ref("https://yzzy.play-cdn21.com/20240407/22159_0d1cdb22/index.m3u8"); // 替换为你的视频链接
+const videoSrc = ref("https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/2minute-demo.mp4");
+//ref("https://yzzy.play-cdn21.com/20240407/22159_0d1cdb22/index.m3u8"); // 替换为你的视频链接
 
 onMounted(() => {
   initializeHls();

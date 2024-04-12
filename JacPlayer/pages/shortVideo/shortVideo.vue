@@ -1,10 +1,10 @@
 <template>
 	<view class="container">
 		<view class="list">
-			<view class="vblk" v-for="item in vlist" :key="item.vod_id">
-				<image :src="item.vod_pic" mode="aspectFit"></image>
-				<text class="name">{{ item.vod_name }}</text>
-			</view>
+			<navigator url="/pages/svplayer/svplayer" class="vblk" v-for="item in vlist" :key="item.vod_id">
+					<image :src="item.vod_pic" mode="aspectFill"></image>
+					<text class="name">{{ item.vod_name }}</text>
+			</navigator>
 		</view>
 		<view class="nav">
 			<button type="default" @click="clickNext">下一页</button>
@@ -26,6 +26,7 @@ const getVideoList = async (page)=>{
 	let data = await apiGetVideoList(page);
 	console.log("-->data:", data);
 	vlist.value = data.list;
+	uni.setStorageSync("videoList", vlist.value)
 }
 
 getVideoList(curPage.value);
@@ -53,12 +54,13 @@ const clickNext = ()=>{
 		.vblk{
 			width: 30vw;
 			height: 30vh;
-			// border: 1px solid red;
+			border: 1px solid red;
 			display: flex;
 			flex-direction: column;
 			image{
-				width: 100%;
-				height: 100%;
+				border: 1px solid green;
+				width: 200rpx;
+				height: 280rpx;
 			}
 			.name{
 				font-size: 8rpx;

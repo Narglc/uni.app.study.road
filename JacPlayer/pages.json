@@ -37,6 +37,14 @@
 			"style": {
 				"navigationBarTitleText": "深度解构学习"
 			}
+		},
+		{
+			"path" : "pages/svplayer/svplayer",
+			"style" : 
+			{
+				"navigationBarTitleText" : "爽句播放页",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {

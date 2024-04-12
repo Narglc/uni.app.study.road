@@ -2,7 +2,7 @@ import {request} from "@/utils/request.js"
 
 export function apiGetVideoList(page){
 	return request({
-		url:"/inc/api_mac10.php",
+		url:"/inc/apijson.php",
 		data:{
 			ac:"detail",
 			t:83,

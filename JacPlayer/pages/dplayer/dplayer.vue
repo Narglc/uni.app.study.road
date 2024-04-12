@@ -1,7 +1,7 @@
 <template>
     <view class="content">
-            <div id="dplayer"></div>
-        </view>
+        <div id="dplayer"></div>
+    </view>
 </template>
 
 <script>
@@ -56,8 +56,8 @@
 
 <style lang="scss" scoped>
 .content{
-	width: 100%;
-	height: 100%;
+	width: 98vw;
+	height: 80vh;
 	border: 1px solid red;
 	#dplayer{
 		border: 1px solid green;
